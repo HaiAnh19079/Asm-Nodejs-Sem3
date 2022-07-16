@@ -1,10 +1,12 @@
-const mongoose = require('mongoose')
-const validator = require('validator')
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
-require('dotenv').config()
+import mongoose from 'mongoose'
+import validator from 'validator'
+import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
+dotenv.config()
 
-const UserSchema = new mongoose.Schema(
+const { Schema } = mongoose
+const UserSchema = new Schema(
     {
         name: {
             type: String,
@@ -87,4 +89,5 @@ UserSchema.methods.comparePassword = function (password) {
     return bcrypt.compare(password, this.password)
 }
 
-module.exports = mongoose.model('User', UserSchema)
+const User = mongoose.model('User', UserSchema)
+export default User;

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-
-const OrderSchema = new mongoose.Schema(
+const { Schema } = mongoose
+const OrderSchema = new Schema(
     {
         shipping_info: [
             {
@@ -54,4 +54,5 @@ const OrderSchema = new mongoose.Schema(
     }
 )
 
-module.exports = mongoose.model('Order', OrderSchema)
+const Order = mongoose.model('Order', OrderSchema)
+export default Order;

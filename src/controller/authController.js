@@ -1,6 +1,6 @@
-const ErrorHandler = require('../utils/errorhandler')
-const User = require('../models/User')
-const jwt = require('jsonwebtoken')
+import ErrorHandler from '../utils/errorhandler.js'
+import User from '../models/User.js'
+import jwt from 'jsonwebtoken'
 class AuthController {
     //[POST] /api/auth/register
     register = async (req, res, next) => {
@@ -82,4 +82,4 @@ class AuthController {
         // });
     }
 }
-export default new AuthController()
+export default new AuthController

@@ -1,6 +1,5 @@
-// const User = require('../models/User')
 import User from '../models/User.js'
-const ErrorHandler = require('../utils/errorhandler')
+import ErrorHandler from '../utils/errorhandler.js'
 
 class UserController {
     //[GET] /api/users/
@@ -134,4 +133,4 @@ class UserController {
         })
     }
 }
-export default new UserController();
+export default new UserController;

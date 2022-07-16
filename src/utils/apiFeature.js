@@ -14,7 +14,7 @@ class ApiFeatures {
             : {}
 
         this.query = this.query.find({ ...keyword })
-        console.log('search api:', this)
+        // console.log('search api:', this)
         return this
     }
 
@@ -46,4 +46,4 @@ class ApiFeatures {
     }
 }
 
-module.exports = ApiFeatures
+export default ApiFeatures

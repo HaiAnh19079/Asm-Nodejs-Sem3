@@ -1,10 +1,10 @@
-import productsRouter from './product.js'
+import productsRouter from './products.js';
+import siteRouter from './site.js';
+import adminRouter from './admin.js';
 
 function route(app) {
-    // app.get('/', (req, res) => {
-    //     res.render('home');
-    // });
-
+    app.use('/admin', adminRouter)
     app.use('/products', productsRouter)
-}
-export default route
+    app.use('/', siteRouter)
+};
+export default route;

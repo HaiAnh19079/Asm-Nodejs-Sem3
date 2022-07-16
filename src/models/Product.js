@@ -67,4 +67,4 @@ const ProductSchema = new Schema(
 //Add plugin
 ProductSchema.plugin(mongooseDelete, { overrideMethods: true, deletedAt: true })
 const Product = mongoose.model('Product', ProductSchema)
-export default Product
+export default Product;

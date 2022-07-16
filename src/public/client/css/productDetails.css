@@ -1,0 +1,119 @@
+.product__detail-img {
+    text-align: center;
+    background: #f3f2ee;
+    padding: 20px 0 40px;
+    margin-bottom: 30px;
+}
+
+.nav.nav-tabs.img-tabs {
+    border-bottom: none;
+}
+.img-tabs {
+    width: 120px;
+}
+.img-tabs li {
+    padding-bottom: 20px;
+}
+.product-thumb-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    height: 120px;
+    width: 95px;
+}
+.product-thumb-item img {
+    max-width: 100%;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 120px;
+    background-position: top center;
+    overflow: hidden;
+}
+
+.product-img-item {
+    position: relative;
+}
+.product-img-item img {
+    max-width: 100%;
+}
+.product__detail-info {
+    /* display: flex; */
+    text-align: center;
+}
+.detail-name {
+    color: #111;
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-size: 2.4rem;
+}
+
+.detail-price {
+    color: #0d0d0d;
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-size: 3rem;
+}
+
+.detail-desc {
+    font-size: 1.5rem;
+    color: #3d3d3d;
+    font-weight: 600;
+    line-height: 25px;
+    margin-bottom: 20px;
+}
+
+.product__detail-options {
+    display: flex;
+    justify-content: space-between;
+}
+
+.detail-size-option,
+.detail-color-option,
+.title-option {
+    display: flex;
+}
+.title-option {
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 0 10px 0 0;
+}
+.quantity {
+    /* padding: 14px 30px; */
+    text-align: center;
+    width: 100px;
+    height: 40px;
+    border: 1px solid #e5e5e5;
+    position: relative;
+}
+.quantity input {
+    /* padding: 14px 30px; */
+    width: 70px;
+    height: 100%;
+    outline: none;
+    text-align: center;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.add-to-cart,
+.add-to-cart:hover {
+    /* display: inline-block; */
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 14px 30px;
+    color: #ffffff;
+    background: #000000;
+    letter-spacing: 4px;
+}
+.related-product {
+    padding: 100px 0 0 50px;
+}

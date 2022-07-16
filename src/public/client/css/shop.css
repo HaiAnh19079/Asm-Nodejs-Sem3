@@ -1,0 +1,142 @@
+.section__breadcrumb {
+    background: #f3f2ee;
+    padding: 40px 0;
+}
+.breadcrumb-title {
+    color: #111111;
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-size: 2.4rem;
+}
+
+.breadcrumb__links a {
+    font-size: 15px;
+    color: #111;
+    margin-right: 18px;
+    display: inline-block;
+    position: relative;
+}
+
+.breadcrumb__links a::after {
+    position: absolute;
+    right: -14px;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: '\f054';
+    top: 25%;
+    font-size: 9px;
+}
+
+.breadcrumb__links span {
+    font-size: 1.5rem;
+    color: #b7b7b7;
+    display: inline-block;
+}
+.section__shop-product {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.shop__sidebar-search {
+    margin-bottom: 45px;
+}
+
+.shop__sidebar-option .card {
+    border: none;
+    border-radius: 0;
+    margin-bottom: 25px;
+}
+
+.shop__sidebar-option .card-header a {
+    color: #111111;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: block;
+}
+.card-body {
+    border-bottom: 1px solid #e5e5e5;
+}
+.card-header {
+    border: none;
+    background-color: transparent;
+}
+
+.shop__product-options p {
+    font-size: 1.5rem;
+    font-family: 'Nunito Sans', sans-serif;
+    color: #3d3d3d;
+    font-weight: 600;
+    line-height: 25px;
+    margin: 0 0 15px 0;
+}
+.shop__product-left {
+    text-align: left;
+}
+.shop__product-right {
+    text-align: right;
+}
+
+.shop__product-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 18px;
+}
+
+.shop__product-pagination a {
+    font-size: 1.6rem;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #111;
+}
+.shop__product-pagination span {
+    padding: 0 4px;
+}
+.shop__product-pagination a.active {
+    border-color: #111;
+}
+
+.shop-scroll {
+    height: 225px;
+    overflow-y: hidden;
+    outline: none;
+    transition: all, 0.2s;
+}
+.shop-scroll li {
+    list-style-type: none;
+}
+.shop-scroll li a {
+    color: #b7b7b7;
+    font-size: 1.5rem;
+    line-height: 32px;
+    transition: all, 0.3s;
+}
+.shop-scroll li a:hover {
+    color: #111111;
+}
+.shop-scroll::-webkit-scrollbar {
+    width: 5px;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    opacity: 0;
+}
+.shop__sidebar-scroll:hover .shop-scroll {
+    overflow-y: scroll;
+}
+.shop-scroll::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #000000;
+}
+.shop-scroll::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    background-color: #f5f5f5;
+}
+

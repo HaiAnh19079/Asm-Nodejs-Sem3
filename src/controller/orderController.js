@@ -1,6 +1,6 @@
-const Order = require('../models/Order')
-const Product = require('../models/Product')
-const ErrorHandler = require('../utils/errorhandler')
+import Order from '../models/Order.js'
+import Product from '../models/Product.js'
+import ErrorHandler from '../utils/errorhandler.js'
 
 class OrderController {
     // [POST] /api/orders/newOrders
@@ -226,4 +226,4 @@ async function updateStock(id, quantity) {
     product.stock -= quantity
     await product.save({ validateBeforeSave: false })
 }
-export default new OrderController()
+export default new OrderController
