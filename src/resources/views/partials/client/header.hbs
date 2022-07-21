@@ -1,379 +1,419 @@
-	<!-- Header -->
-	<div id="header">
-            <div class="header__top">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col col-6">
-                            <div class="header__top-right">
-                                <span class="header__top-right-text">Free shipping, 30-day return or refund guarantee.
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col col-6">
-                            <div class="header__top-left">
-                                <div class="header__top-links pull-right">
-                                    <a href="#"
-                                        class="header__top-link--separated text-decoration-none js-show-modal js-signin-btn">SIGN
-                                        IN</a>
-                                    <a href="#" class="text-decoration-none js-show-modal js-signup-btn">SIGN UP</a>
-                                </div>
-                            </div>
-                        </div>
+<!-- Header -->
+<div id="header">
+    <div class="header__top">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col col-6">
+                    <div class="header__top-right">
+                        <span class="header__top-right-text">Free shipping, 30-day return or refund guarantee.
+                        </span>
                     </div>
                 </div>
-            </div>
-            <div class="header__main">
-                <div class="container">
-                    <div class="row">
-                        <div class="col col-3">
-                            <div class="header__logo">
-                                <a href="/index.html">
-                                    <img src="client/img/Inlogo/download.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col col-6">
-                            <nav class="header__menu">
-                                <ul class="header__menu-list">
-                                    <li>
-                                        <a href="./index.html" class="text-decoration-none">
-                                            <span class="">Home</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="./Shop.html" class="text-decoration-none">
-                                            <span class="">Shop</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="./ProductDetail.html" class="text-decoration-none">
-                                            <span class="">Pages</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="text-decoration-none">
-                                            <span class="">Blog</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="text-decoration-none">
-                                            <span class="">Contacts</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <div class="col col-3">
-                            <div class="header__option pull-right">
-                                <a href="#" class="header__option-item header__option-search">
-                                    <i class="fas fa-search header__option-icon"></i>
-                                </a>
-                                <a href="#" class="header__option-item header__option-cart js-show-modal js-modal-cart">
-                                    <i class="fas fa-shopping-cart header__option-icon" aria-hidden="true"></i>
-                                    <span class="cart-count"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal js-modal">
-                <div class="modal__overlay js-hidden-modal"></div>
-                <div class="modal__body js-modal__body">
-                    <!-- Register form -->
-                    <div class="auth-form form-signup">
-                        <div class="auth-form__container">
-
-                            <div class="auth-form__header">
-                                <h3 class="auth-form__heading auth-form__signup-btn">Đăng Ký</h3>
-                                <span class="auth-form__switch-btn auth-form__signin-btn">Đăng Nhập</span>
-                            </div>
-
-                            <div class="auth-form_form">
-                                <div class="auth-form__group">
-                                    <input type="text" class="auth-form__input" placeholder="Email của bạn">
-                                </div>
-                                <div class="auth-form__group">
-                                    <input type="password" class="auth-form__input" placeholder="Mật khẩu của bạn">
-                                </div>
-                                <div class="auth-form__group">
-                                    <input type="password" class="auth-form__input"
-                                        placeholder="Nhập lại Mật khẩu của bạn">
-                                </div>
-                            </div>
-
-                            <div class="auth-form__aside">
-
-                            </div>
-
-                            <div class="auth-form__controls">
-                                <button class="btn btn--normal mr-8 js-hidden-modal">TRỞ LẠI</button>
-                                <button class="btn btn--primary">ĐĂNG KÝ</button>
-                            </div>
-
-                        </div>
-
-                        <div class="auth-form__socials">
-                            <a href="#" class="btn btn--size-s btn--with-icon auth-form__socials-fb">
-                                <i class="auth-form__socials-icon fab fa-facebook-square"></i>
-                                <span class="auth-form__socials-title">
-                                    Kết nối với Facebook
-                                </span>
-                            </a>
-                            <a href="#" class="btn btn--size-s btn--with-icon auth-form__socials-gg">
-                                <i class="auth-form__socials-icon fab fa-google"></i>
-                                <span class="auth-form__socials-title">
-                                    Kết nối với Google
-                                </span>
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <!-- Login form -->
-                    <div class="auth-form form-signin">
-                        <div class="auth-form__container">
-
-                            <div class="auth-form__header">
-                                <h3 class="auth-form__heading auth-form__signin-btn">Đăng Nhập</h3>
-                                <span class="auth-form__switch-btn auth-form__signup-btn">Đăng Ký</span>
-                            </div>
-
-                            <div class="auth-form_form">
-                                <div class="auth-form__group">
-                                    <input type="text" class="auth-form__input" placeholder="Email của bạn">
-                                </div>
-                                <div class="auth-form__group">
-                                    <input type="password" class="auth-form__input" placeholder="Mật khẩu của bạn">
-                                </div>
-                            </div>
-
-                            <div class="auth-form__aside">
-                                <div class="auth-form__help">
-                                    <a href="" class="auth-form__help-link help-forgot">Quên mật khẩu</a>
-                                    <span class="auth-form__help-separate"></span>
-                                    <a href="" class="auth-form__help-link">Cần trợ giúp?</a>
-                                </div>
-                            </div>
-
-                            <div class="auth-form__controls">
-                                <button class="btn btn--normal mr-8 js-hidden-modal">TRỞ LẠI</button>
-                                <button class="btn btn--primary">ĐĂNG NHẬP</button>
-                            </div>
-
-                        </div>
-
-                        <div class="auth-form__socials">
-                            <a href="#" class="btn btn--size-s btn--with-icon auth-form__socials-fb mr-4">
-                                <i class="auth-form__socials-icon fab fa-facebook-square"></i>
-                                <span class="auth-form__socials-title">
-                                    Đăng nhập với Facebook
-                                </span>
-                            </a>
-                            <a href="#" class="btn btn--size-s btn--with-icon auth-form__socials-gg ml-4">
-                                <i class="auth-form__socials-icon fab fa-google"></i>
-                                <span class="auth-form__socials-title">
-                                    Đăng nhập với Google
-                                </span>
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <!-- Modal quickView -->
-                    <div class="modal-quick-view">
-                        <div class="quick-view-container">
-                            <div class="quick-view-header">
-                                <div class="quick-view-close js-hidden-modal">
-                                    <p class="">&times;</p>
-                                </div>
-                            </div>
-
-                            <div class="product__details">
-                                <div class="product__detail-img">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-lg-3">
-                                                <ul class="nav nav-tabs img-tabs">
-                                                    <li class="tab-item active">
-                                                        <a href="#tabs-1" class="tab-link">
-                                                            <div class="product-thumb-item set-bg"
-                                                                data-setbg="client/img/product/product-9-1.webp"
-                                                                style="background-image: url()">
-
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li class=" tab-item">
-                                                        <a href="#tabs-2" class="tab-link">
-                                                            <div class="product-thumb-item set-bg"
-                                                                data-setbg="client/img/product/product-9-2.webp"
-                                                                style="background-image: url()">
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <li class="tab-item">
-                                                        <a href="#tabs-3" class="tab-link">
-                                                            <div class="product-thumb-item set-bg"
-                                                                data-setbg="client/img/product/product-9-3.webp"
-                                                                style="background-image: url()">
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="col-lg-6">
-                                                <div class="tab-content">
-                                                    <div class="tab-pane active" id="tabs-1">
-                                                        <div class="product-img-item">
-                                                            <img src="client/img/product/product-9-1.webp" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="tab-pane" id="tabs-2">
-                                                        <div class="product-img-item">
-                                                            <img src="client/img/product/product-9-2.webp" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="tab-pane" id="tabs-3">
-                                                        <div class="product-img-item">
-                                                            <img src="client/img/product/product-9-3.webp" alt="">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Modal header cart -->
-                    <div class="header-cart modal-cart">
-                        <div class="header-cart-title">
-                            <h3>YOUR CART</h3>
-                            <div class="js-hidden-modal">
-                                <i class="close-cart fas fa-times"></i>
-                            </div>
-                        </div>
-                        <div class="header-cart-content">
-                            <div class="cart-list">
-                                <div class="cart-item">
-                                    <div class="cart-item-img">
-                                        <img src="client/img/product/product-1.jpg.webp" alt="img">
-                                    </div>
-                                    <div class="cart-item-text">
-                                        <a href="#" class="item-name">White Shirt Pleat</a>
-                                        <div class="cart-item-info">
-                                            <span class="item-amount">1</span>
-                                            x
-                                            <span class="item-price">$19</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cart-item">
-                                    <div class="cart-item-img">
-                                        <img src="client/img/product/product-1.jpg.webp" alt="img">
-                                    </div>
-                                    <div class="cart-item-text">
-                                        <a href="#" class="item-name">White Shirt Pleat</a>
-                                        <div class="cart-item-info">
-                                            <span class="item-amount">1</span>
-                                            x
-                                            <span class="item-price">$19</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cart-item">
-                                    <div class="cart-item-img">
-                                        <img src="client/img/product/product-1.jpg.webp" alt="img">
-                                    </div>
-                                    <div class="cart-item-text">
-                                        <a href="#" class="item-name">White Shirt Pleat</a>
-                                        <div class="cart-item-info">
-                                            <span class="item-amount">1</span>
-                                            x
-                                            <span class="item-price">$19</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cart-item">
-                                    <div class="cart-item-img">
-                                        <img src="client/img/product/product-1.jpg.webp" alt="img">
-                                    </div>
-                                    <div class="cart-item-text">
-                                        <a href="#" class="item-name">White Shirt Pleat</a>
-                                        <div class="cart-item-info">
-                                            <span class="item-amount">1</span>
-                                            x
-                                            <span class="item-price">$19</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cart-item">
-                                    <div class="cart-item-img">
-                                        <img src="client/img/product/product-1.jpg.webp" alt="img">
-                                    </div>
-                                    <div class="cart-item-text">
-                                        <a href="#" class="item-name">White Shirt Pleat</a>
-                                        <div class="cart-item-info">
-                                            <span class="item-amount">1</span>
-                                            x
-                                            <span class="item-price">$19</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cart-item">
-                                    <div class="cart-item-img">
-                                        <img src="client/img/product/product-1.jpg.webp" alt="img">
-                                    </div>
-                                    <div class="cart-item-text">
-                                        <a href="#" class="item-name">White Shirt Pleat</a>
-                                        <div class="cart-item-info">
-                                            <span class="item-amount">1</span>
-                                            x
-                                            <span class="item-price">$19</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cart-item">
-                                    <div class="cart-item-img">
-                                        <img src="client/img/product/product-1.jpg.webp" alt="img">
-                                    </div>
-                                    <div class="cart-item-text">
-                                        <a href="#" class="item-name">White Shirt Pleat</a>
-                                        <div class="cart-item-info">
-                                            <span class="item-amount">1</span>
-                                            x
-                                            <span class="item-price">$19</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cart-item">
-                                    <div class="cart-item-img">
-                                        <img src="client/img/product/product-1.jpg.webp" alt="img">
-                                    </div>
-                                    <div class="cart-item-text">
-                                        <a href="#" class="item-name">White Shirt Pleat</a>
-                                        <div class="cart-item-info">
-                                            <span class="item-amount">1</span>
-                                            x
-                                            <span class="item-price">$19</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="header-cart-total" >
-                            <h4 class="cart-total">$100</h4>
-                            <div class="view-cart-btn">
-                                VIEW CART
-                            </div>
+                <div class="col col-6">
+                    <div class="header__top-left">
+                        <div class="header__top-links pull-right">
+                            <a href="#"
+                                class="header__top-link--separated text-decoration-none js-show-modal js-signin-btn">SIGN
+                                IN</a>
+                            <a href="#" class="text-decoration-none js-show-modal js-signup-btn">SIGN UP</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="header__main">
+        <div class="container">
+            <div class="row">
+                <div class="col col-3">
+                    <div class="header__logo">
+                        <a href="/index.html">
+                            <img src="client/img/Inlogo/download.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col col-6">
+                    <nav class="header__menu">
+                        <ul class="header__menu-list">
+                            <li>
+                                <a href="/" class="text-decoration-none">
+                                    <span class="">Home</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/products" class="text-decoration-none">
+                                    <span class="">Shop</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-decoration-none">
+                                    <span class="">Pages</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-decoration-none">
+                                    <span class="">Blog</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-decoration-none">
+                                    <span class="">Contacts</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col col-3">
+                    <div class="header__option pull-right">
+                        <a href="#" class="header__option-item header__option-search">
+                            <i class="fas fa-search header__option-icon"></i>
+                        </a>
+                        <a href="#" class="header__option-item header__option-cart js-show-modal js-modal-cart">
+                            <i class="fas fa-shopping-cart header__option-icon" aria-hidden="true"></i>
+                            <span class="cart-count"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal js-modal">
+        <div class="modal__overlay js-hidden-modal"></div>
+        <div class="modal__body js-modal__body">
+            <!-- Register form -->
+            <div class="auth-form form-signup">
+                <div class="auth-form__container">
+
+                    <div class="auth-form__header">
+                        <h3 class="auth-form__heading auth-form__signup-btn">Đăng Ký</h3>
+                        <span class="auth-form__switch-btn auth-form__signin-btn">Đăng Nhập</span>
+                    </div>
+
+                    <div class="auth-form_form">
+                        <div class="auth-form__group">
+                            <input type="text" class="auth-form__input" placeholder="Email của bạn">
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="password" class="auth-form__input" placeholder="Mật khẩu của bạn">
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="password" class="auth-form__input" placeholder="Nhập lại Mật khẩu của bạn">
+                        </div>
+                    </div>
+
+                    <div class="auth-form__aside">
+
+                    </div>
+
+                    <div class="auth-form__controls">
+                        <button class="btn btn--normal mr-8 js-hidden-modal">TRỞ LẠI</button>
+                        <button class="btn btn--primary">ĐĂNG KÝ</button>
+                    </div>
+
+                </div>
+
+                <div class="auth-form__socials">
+                    <a href="#" class="btn btn--size-s btn--with-icon auth-form__socials-fb">
+                        <i class="auth-form__socials-icon fab fa-facebook-square"></i>
+                        <span class="auth-form__socials-title">
+                            Kết nối với Facebook
+                        </span>
+                    </a>
+                    <a href="#" class="btn btn--size-s btn--with-icon auth-form__socials-gg">
+                        <i class="auth-form__socials-icon fab fa-google"></i>
+                        <span class="auth-form__socials-title">
+                            Kết nối với Google
+                        </span>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Login form -->
+            <div class="auth-form form-signin">
+                <div class="auth-form__container">
+
+                    <div class="auth-form__header">
+                        <h3 class="auth-form__heading auth-form__signin-btn">Đăng Nhập</h3>
+                        <span class="auth-form__switch-btn auth-form__signup-btn">Đăng Ký</span>
+                    </div>
+
+                    <div class="auth-form_form">
+                        <div class="auth-form__group">
+                            <input type="text" class="auth-form__input" placeholder="Email của bạn">
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="password" class="auth-form__input" placeholder="Mật khẩu của bạn">
+                        </div>
+                    </div>
+
+                    <div class="auth-form__aside">
+                        <div class="auth-form__help">
+                            <a href="" class="auth-form__help-link help-forgot">Quên mật khẩu</a>
+                            <span class="auth-form__help-separate"></span>
+                            <a href="" class="auth-form__help-link">Cần trợ giúp?</a>
+                        </div>
+                    </div>
+
+                    <div class="auth-form__controls">
+                        <button class="btn btn--normal mr-8 js-hidden-modal">TRỞ LẠI</button>
+                        <button class="btn btn--primary">ĐĂNG NHẬP</button>
+                    </div>
+
+                </div>
+
+                <div class="auth-form__socials">
+                    <a href="#" class="btn btn--size-s btn--with-icon auth-form__socials-fb mr-4">
+                        <i class="auth-form__socials-icon fab fa-facebook-square"></i>
+                        <span class="auth-form__socials-title">
+                            Đăng nhập với Facebook
+                        </span>
+                    </a>
+                    <a href="#" class="btn btn--size-s btn--with-icon auth-form__socials-gg ml-4">
+                        <i class="auth-form__socials-icon fab fa-google"></i>
+                        <span class="auth-form__socials-title">
+                            Đăng nhập với Google
+                        </span>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Modal quickView -->
+            <div class="modal-quick-view" style="width:1140px">
+                <div class="container">
+                    <div class="quick-view-container bg-white">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="quick-view-header">
+                                    <div class="quick-view-close js-hidden-modal">
+                                        <p class="">&times;</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="product__details d-flex">
+                                    <div class="col-lg-7">
+                                        <div class="product__detail-img" style="max-width:100%">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <ul class="nav nav-tabs img-tabs img-qv">
+                                                            <li class="tab-item active">
+                                                                <a href="#tabs-1" class="tab-link">
+                                                                    <div class="product-thumb-item set-bg"
+                                                                        data-setbg="\dataimg\1658370848521.jpg"
+                                                                        style="background-image: url()">
+
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                            <li class=" tab-item">
+                                                                <a href="#tabs-2" class="tab-link">
+                                                                    <div class="product-thumb-item set-bg"
+                                                                        data-setbg="\dataimg\1658371047667.jpg"
+                                                                        style="background-image: url()">
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                            <li class="tab-item">
+                                                                <a href="#tabs-3" class="tab-link">
+                                                                    <div class="product-thumb-item set-bg"
+                                                                        data-setbg="\dataimg\1658386256414.jpg"
+                                                                        style="background-image: url()">
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+
+                                                    <div class="col-lg-9">
+                                                        <div class="tab-content img-qv">
+                                                            <div class="tab-pane active" id="tabs-1">
+                                                                <div class="product-img-item">
+                                                                    <img src="\dataimg\1658370848521.jpg"
+                                                                        alt="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane" id="tabs-2">
+                                                                <div class="product-img-item">
+                                                                    <img src="\dataimg\1658371047667.jpg"
+                                                                        alt="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane" id="tabs-3">
+                                                                <div class="product-img-item">
+                                                                    <img src="\dataimg\1658386256414.jpg"
+                                                                        alt="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="product__detail-info" style="max-width:100%">
+                                            <div class="product__detail-text">
+                                                <div class="product-name" id="product-name">Trang phucj mua dong nam
+                                                    2022 voi da thatvcd</div>
+                                                <div class="product-price" id="product-price">$200</div>
+                                                <div class="product-desc" id="product-desc">
+                                                    Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula.
+                                                    Mauris consequat ornare feugiat.
+                                                </div>
+                                            </div>
+
+                                            <div class="product-options-list">
+                                                <div class="product-option-size">
+                                                    <label for="product-size">Size</label>
+                                                    <select name="size" id="product-size" class="select2-size">
+                                                        <option value="M">M</option>
+                                                        <option value="X">X</option>
+                                                        <option value="L">L</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal header cart -->
+            <div class="header-cart modal-cart">
+                <div class="header-cart-title">
+                    <h3>YOUR CART</h3>
+                    <div class="js-hidden-modal">
+                        <i class="close-cart fas fa-times"></i>
+                    </div>
+                </div>
+                <div class="header-cart-content">
+                    <div class="cart-list">
+                        <div class="cart-item">
+                            <div class="cart-item-img">
+                                <img src="client/img/product/product-1.jpg.webp" alt="img">
+                            </div>
+                            <div class="cart-item-text">
+                                <a href="#" class="item-name">White Shirt Pleat</a>
+                                <div class="cart-item-info">
+                                    <span class="item-amount">1</span>
+                                    x
+                                    <span class="item-price">$19</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-item">
+                            <div class="cart-item-img">
+                                <img src="client/img/product/product-1.jpg.webp" alt="img">
+                            </div>
+                            <div class="cart-item-text">
+                                <a href="#" class="item-name">White Shirt Pleat</a>
+                                <div class="cart-item-info">
+                                    <span class="item-amount">1</span>
+                                    x
+                                    <span class="item-price">$19</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-item">
+                            <div class="cart-item-img">
+                                <img src="client/img/product/product-1.jpg.webp" alt="img">
+                            </div>
+                            <div class="cart-item-text">
+                                <a href="#" class="item-name">White Shirt Pleat</a>
+                                <div class="cart-item-info">
+                                    <span class="item-amount">1</span>
+                                    x
+                                    <span class="item-price">$19</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-item">
+                            <div class="cart-item-img">
+                                <img src="client/img/product/product-1.jpg.webp" alt="img">
+                            </div>
+                            <div class="cart-item-text">
+                                <a href="#" class="item-name">White Shirt Pleat</a>
+                                <div class="cart-item-info">
+                                    <span class="item-amount">1</span>
+                                    x
+                                    <span class="item-price">$19</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-item">
+                            <div class="cart-item-img">
+                                <img src="client/img/product/product-1.jpg.webp" alt="img">
+                            </div>
+                            <div class="cart-item-text">
+                                <a href="#" class="item-name">White Shirt Pleat</a>
+                                <div class="cart-item-info">
+                                    <span class="item-amount">1</span>
+                                    x
+                                    <span class="item-price">$19</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-item">
+                            <div class="cart-item-img">
+                                <img src="client/img/product/product-1.jpg.webp" alt="img">
+                            </div>
+                            <div class="cart-item-text">
+                                <a href="#" class="item-name">White Shirt Pleat</a>
+                                <div class="cart-item-info">
+                                    <span class="item-amount">1</span>
+                                    x
+                                    <span class="item-price">$19</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-item">
+                            <div class="cart-item-img">
+                                <img src="client/img/product/product-1.jpg.webp" alt="img">
+                            </div>
+                            <div class="cart-item-text">
+                                <a href="#" class="item-name">White Shirt Pleat</a>
+                                <div class="cart-item-info">
+                                    <span class="item-amount">1</span>
+                                    x
+                                    <span class="item-price">$19</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-item">
+                            <div class="cart-item-img">
+                                <img src="client/img/product/product-1.jpg.webp" alt="img">
+                            </div>
+                            <div class="cart-item-text">
+                                <a href="#" class="item-name">White Shirt Pleat</a>
+                                <div class="cart-item-info">
+                                    <span class="item-amount">1</span>
+                                    x
+                                    <span class="item-price">$19</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="header-cart-total">
+                    <h4 class="cart-total">$100</h4>
+                    <div class="view-cart-btn">
+                        VIEW CART
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

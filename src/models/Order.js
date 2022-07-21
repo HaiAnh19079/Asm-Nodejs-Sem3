@@ -1,23 +1,15 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 const { Schema } = mongoose
 const OrderSchema = new Schema(
     {
-        shipping_info: [
-            {
-                address: {
-                    type: String,
-                    required: true,
-                },
-                city: {
-                    type: String,
-                    required: true,
-                },
-                phoneNumber: {
-                    type: Number,
-                    required: true,
-                },
-            },
-        ],
+        address: {
+            type: String,
+            required: true,
+        },
+        phoneNumber: {
+            type: Number,
+            required: true,
+        },
         // Cart
         cart: {
             type: Object,
@@ -55,4 +47,4 @@ const OrderSchema = new Schema(
 )
 
 const Order = mongoose.model('Order', OrderSchema)
-export default Order;
+export default Order

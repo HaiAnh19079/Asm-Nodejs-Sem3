@@ -25,14 +25,10 @@ const UserSchema = new Schema(
             minLength: [3, 'password should be at least 3 characters'],
             select: false,
         },
-        avatar: [
-            {
-                url: {
-                    type: String,
-                    require: true,
-                },
-            },
-        ],
+        avatar: {
+            type: String,
+            require: true,
+        },
         role: {
             type: String,
             default: 'user',
@@ -74,20 +70,10 @@ UserSchema.methods.generateJWT = function () {
     })
 }
 
-// generateVerificationToken
-// UserSchema.methods.generateVerificationToken = function() {
-//     let payload = {
-//         userId: this._id,
-//         token: crypto.randomBytes(20).toString('hex')
-//     };
-
-//     return new Token(payload);
-// };
-
 // ComparePassword
 UserSchema.methods.comparePassword = function (password) {
     return bcrypt.compare(password, this.password)
 }
 
 const User = mongoose.model('User', UserSchema)
-export default User;
+export default User

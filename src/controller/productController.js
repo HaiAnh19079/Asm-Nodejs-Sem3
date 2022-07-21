@@ -1,62 +1,45 @@
 import Product from '../models/Product.js'
 import ErrorHandler from '../utils/errorhandler.js'
 import ApiFeature from '../utils/apiFeature.js'
-import {MultipleMongooseToObject, MongooseToObject} from '../utils/mongoose.js'
+import {
+    MultipleMongooseToObject,
+    MongooseToObject,
+} from '../utils/mongoose.js'
 class ProductController {
-
     //[GET] /products
     async index(req, res, next) {
-        // Product.find({})
-        //     .then(products => {
-
-        //         // var category = products.map(product => {
-        //         //     var [a, ...rest] = product.category
-        //         //     return a.toLowerCase()
-        //         // })
-        //         res.render('client/products/products'
-        //         // , {
-        //         //     products: multipleMongooseToObject(products),
-        //         //     // category: category
-        //         // }
-        //         );
-        //     })
-        //     .catch(next);
         try {
-            const products = await Product.find();
+            const products = await Product.find().limit(8)
             if (!products) {
-                res.json({ 
-                    msg:'no products in db!'
+                res.json({
+                    msg: 'no products in db!',
                 })
             }
-
-            res.render('client/products/products',{
-                products:MultipleMongooseToObject(products),
+            console.log(products)
+            res.render('client/products/home', {
+                products: MultipleMongooseToObject(products),
             })
         } catch (e) {
-            res.json({ error: e });
+            res.json({ error: e })
         }
     }
 
     //[POST]/products modal
-    GetProductQuickView(req, res, next) {
+    async GetProductQuickView(req, res, next) {
+        var data_id = req.body.id;
+        console.log('data_id', data_id)
+        const product = await Product.findOne({_id:data_id})
+        
+        console.log('product',product)
 
-        var data_id = req.body.id
-        console.log(data_id)
-        Product.findById(data_id)
-            .then(product => {
-                console.log(product)
-                res.json(product)
-            })
-            .catch(next);
-
+        res.json(product)
     }
-
 
     // [POST] api/products/new
     async createProduct(req, res, next) {
         req.body.user = req.user.id
-        console.log(req.body.user);
-        console.log(req.body.file);
+        console.log(req.body.user)
+        console.log(req.body.file)
         const product = await Product.create(req.body)
 
         res.status(201).json({
@@ -68,26 +51,11 @@ class ProductController {
     // [GET] api/products/
     async getAllProducts(req, res, next) {
         const productDeletedCount = await Product.countDocumentsDeleted()
-        // const limit = parseInt(req.query.limit || 5);
-        // const page = parseInt(req.query.page || 1);
-        // const skip = limit * (page - 1);
 
-        // const searchQuery = req.query.keyword ? {
-        //     name: {
-        //         $regex: req.query.keyword,
-        //         $options: "i"
-        //     }
-        // } : {};
-        // console.log("searchQuery:", searchQuery);
-        // console.log(req.query)
-        // const products = await Product.find(searchQuery)
-        //     .limit(limit)
-        //     .skip(skip)
         const apiFeature = new ApiFeature(Product.find(), req.query)
             .search()
             .filter()
-            // .pagination(3)
-        // console.log('apiFeature.query:', apiFeature.query)
+        // .pagination(8)
         let products = await apiFeature.query
         if (typeof products === 'Array' && products.length === 0) {
             res.status(200).json({
@@ -97,23 +65,12 @@ class ProductController {
                 message: 'All products have been soft deleted',
             })
         }
-        console.log("products =>",products)
+        console.log('products =>', products)
         const totalDocuments = await Product.countDocuments()
-        // const totalPage = Math.ceil(totalDocuments / limit);
-        res.render('client/products/products',{
-            products: MultipleMongooseToObject(products)
+        res.render('client/products/products', {
+            products: MultipleMongooseToObject(products),
+            totalDocuments,
         })
-        // res.status(200).json({
-        //     success: true,
-        //     productDeletedCount,
-        //     products,
-        //     // data: {
-        //     //     page,
-        //     //     limit,
-        //     //     totalDocuments,
-        //     //     totalPage,
-        //     // }
-        // })
     }
 
     // [GET] api/products/:id
@@ -125,9 +82,9 @@ class ProductController {
                 message: 'Product not found !!',
             })
         }
-        
-        res.render('client/products/products',{
-            product:MongooseToObject(product)
+
+        res.render('client/products/products', {
+            product: MongooseToObject(product),
         })
         // res.status(200).json({
         //     success: true,
@@ -257,4 +214,4 @@ class ProductController {
     }
 }
 
-export default new ProductController
+export default new ProductController()

@@ -23,12 +23,16 @@ const ProductSchema = new Schema(
                     type: String,
                     require: true,
                 },
+                index:{
+                    type: String,
+                }
             },
         ],
-        category: {
-            type: String,
-            require: [true, 'Please enter product category'],
-        },
+        categories: [{
+            type: mongoose.Schema.ObjectId,
+            ref: 'Category',
+            required: true,
+        }],
         stock: {
             type: Number,
             require: [true, 'Please enter product Stock'],
@@ -67,4 +71,4 @@ const ProductSchema = new Schema(
 //Add plugin
 ProductSchema.plugin(mongooseDelete, { overrideMethods: true, deletedAt: true })
 const Product = mongoose.model('Product', ProductSchema)
-export default Product;
+export default Product

@@ -1,9 +1,9 @@
 import express from 'express';
 const router = express.Router();
 
-import productsController from '../controller/ProductController.js';
+import productController from '../controller/ProductController.js';
 
-router.get('/', productsController.getAllProducts);
-router.post('/', productsController.GetProductQuickView);
+router.get('/', productController.getAllProducts);
+router.post('/', productController.GetProductQuickView);
 
 export default router;

@@ -1,0 +1,153 @@
+<div class="body-content">
+
+    <div class="container mt-5">
+        <form action="/admin/product/new" method="POST" enctype="multipart/form-data">
+            <div class="row">
+                {{!-- info product --}}
+                <div class="col-lg-12">
+                    <a href="/admin/products">Về danh sách sản phẩm</a>
+                    <div class="form-content">
+                        <div class="sections">
+                            <div class="section-title">
+                                <h4 class="text">Thông tin cơ bản</h4>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group position-relative">
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control input" id="name" placeholder="name"
+                                            name="name" />
+                                    </div>
+                                    <div class="form-group position-relative">
+                                        <label for="price">Price</label>
+                                        <input type="text" class="form-control" id="price" placeholder="price"
+                                            name="price" />
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group position-relative">
+                                        <label for="category">Category</label>
+                                        <select class="form-control select2-multiple-category " name="categories"
+                                            id="category" multiple="multiple" placeholder="category">
+
+                                            {{#each categories}}
+                                            <option data-value="{{this.name}}" value="{{this._id}}" class="tab-item">
+                                                {{this.name}}</option>
+                                            {{/each}}
+                                        </select>
+
+                                    </div>
+                                    <div class="form-group position-relative">
+                                        <label for="gender" class="labelGender">Gender</label>
+                                        <select class="form-control select2-multiple-gender" style="width: 100%;"
+                                            name="genders" id="gender" multiple="multiple" placeholder="gender">
+                                            <option value='male'>Male</option>
+                                            <option value='female'>Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sections">
+                            <div class="section-title">
+                                <h4 class="text">Thông tin chi tiết</h4>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="">
+                                        {{!-- Tab Content --}}
+                                        <div class="tab-pane active">
+                                            <div class="form-group position-relative">
+                                                <label for="select2Size" class="sizeLabel" data-content="size">Size
+                                                    Clothes</label>
+                                                <select class="form-control select2-multiple-size " id="select2Size"
+                                                    multiple="multiple" name="sizes">
+                                                    <option value='X'>X</option>
+                                                    <option value='XL'>XL</option>
+                                                    <option value='M'>M</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{!-- End Tab Content --}}
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group position-relative">
+                                        <label for="color">Color</label>
+                                        <select class="form-control select2-multiple-color" name="colors"
+                                            multiple="multiple">
+                                            <option value='black'>Black</option>
+                                            <option value='blue'>Blue</option>
+                                            <option value='red'>Red</option>
+                                            <option value='green'>Green</option>
+                                            <option value='white'>White</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group position-relative">
+                                <label for="description">Description</label>
+                                <textarea type="text" class="form-control" id="description" placeholder="description"
+                                    name="description"></textarea>
+
+                            </div>
+                        </div>
+                        <div class="sections">
+                            <div class="section-title">
+                                <h4>Image Upload</h4>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="avatar-edit ">
+                                    <div class="form-group img-content">
+                                        <input type="file" class="d-none" id="file-1" accept=".png, .jpg, .jpeg"
+                                            name="images">
+                                        <label class="position-relative" for="file-1" id="preview-file-1">
+                                            <img class="set-bg" src="https://bit.ly/3ubuq5o" alt="">
+                                            <div>
+                                                <span>+</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="form-group img-content">
+                                        <input type="file" class="d-none" id="file-2" accept=".png, .jpg, .jpeg"
+                                            name="images">
+                                        <label class="position-relative" for="file-2" id="preview-file-2">
+                                            <img class="set-bg" src="https://bit.ly/3ubuq5o" alt="">
+                                            <div>
+                                                <span>+</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="form-group img-content">
+                                        <input type="file" class="d-none" id="file-3" accept=".png, .jpg, .jpeg"
+                                            name="images">
+                                        <label class="position-relative" for="file-3" id="preview-file-3">
+                                            <img class="set-bg" src="https://bit.ly/3ubuq5o" alt="">
+                                            <div>
+                                                <span>+</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                    <button type="submit" id="create-submit" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+    </div>
+    </form>
+</div>
+
+</div>
+
+</div>
+
+<div class="pb-150">
+
+</div>

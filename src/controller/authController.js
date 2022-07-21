@@ -67,19 +67,22 @@ class AuthController {
     // [GET] /api/users/logout
     async logout(req, res, next) {
         // const user = req.user;
-        // const user = await User.findOne({ id: req.user.id });
-        // console.log("user logout:", user);
-        // console.log("token:", req.token)
-        // req.token = null;
-        // console.log("token:", req.token)
-        // res.cookie('token', null, {
-        //     expiresIn: new Date(Date.now()),
-        //     httpOnly: true,
-        // });
-        // res.status(200).json({
-        //     success: true,
-        //     message: "Logged Out",
-        // });
+        const user = await User.findOne({ id: req.user.id });
+        console.log("user logout:", user);
+        console.log("token:", req.token)
+        req.token = null;
+        req.headers.authorization = null;
+        req.user = null;
+        console.log("token:", req.token)
+        res.cookie('token', null, {
+            expiresIn: new Date(Date.now()),
+            httpOnly: true,
+        });
+        res.status(200).json({
+            success: true,
+            message: "Logged Out",
+        });
+        res.redirect('/')
     }
 }
 export default new AuthController

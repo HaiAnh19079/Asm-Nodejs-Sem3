@@ -29,8 +29,16 @@ $(document).ready(function () {
     Background Set
     --------------------*/
     $('.set-bg').each(function () {
-        var bg = $(this).data('setbg')
-        $(this).css('background-image', `url(${bg})`)
+        let bg = $(this).data('setbg')
+        // console.log(this)
+        // console.log(bg)
+        let first = bg.slice(0,9)
+        let last = bg.slice(9)
+        // console.log("first->",first)
+        // console.log("last->",last)
+        // console.log(`url(\\${bg})`);
+        
+        $(this).css('background-image', `url(\\${first}\\${last})`)
     })
 
     $('.label-color').each(function () {
@@ -145,4 +153,38 @@ $(document).ready(function () {
     $(window).resize(function(){
         $('.header-cart').css('height',`${window.innerHeight}`)
       });
+
+
+
+
+    $(document).on('click', '.js-modal-quick-view', function() {
+        var dataId = $(this).attr("data-id");
+        console.log(dataId);
+        $.ajax({
+            url: '/products',
+            method: 'POST',
+            dataType: 'json',
+            data: { id: dataId },
+            success: function(product) {
+                const imgs = product
+                console.log(imgs)
+                // $('.img-modal').attr('src', `${product.image[0]}`)
+                // $('.img-modal').attr('data-thumb', `${product.image[0]}`)
+                $('#product-name').text(product.name)
+                $('#product-price').text('$' + product.price)
+                $('#product-desc').text(product.description)
+                // for (var i = 0; i < product.size.length; i++) {
+                //     var s = `<option>Size ${product.size[i]}</option>`
+                //     $('#product-size').append(s)
+                // }
+                // for (var i = 0; i < product.color.length; i++) {
+                //     var c = `<option>${product.color[i]}</option>`
+                //     $('#product-color').append(c)
+                // }
+            },
+            error: function(response) {
+                alert('server error')
+            }
+        });
+    });
 })

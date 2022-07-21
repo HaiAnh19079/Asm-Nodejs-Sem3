@@ -18,8 +18,10 @@
     <!-- Page plugins -->
 
     <!-- Argon CSS -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+    {{!--
+    <link rel="stylesheet" href="/admin/select2/dist/css/select2.min.css"> --}}
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/admin/css/argon.css?v=1.2.0" type="text/css">
     <link rel="stylesheet" href="/admin/css/argon.css" type="text/css">
     <link rel="stylesheet" href="/admin/css/style.css" type="text/css">
@@ -35,6 +37,7 @@
     </div>
 
     <script src="/admin/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script src="/admin/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/admin/vendor/js-cookie/js.cookie.js"></script>
     <script src="/admin/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
@@ -43,12 +46,58 @@
     <script src="/admin/vendor/chart.js/dist/Chart.min.js"></script>
     <script src="/admin/vendor/chart.js/dist/Chart.extension.js"></script>
     <!-- Argon JS -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
-
-    <script src="/admin/js/argon.js?v=1.2.0"></script>
     {{!--
-    <script src="client/js/main.js"></script> --}}
+    <script src="/admin/select2/dist/js/select2.min.js"></script> --}}
+    <script src="/admin/js/argon.js?v=1.2.0"></script>
     <script src="/admin/js/app.js"></script>
+    <script>
+
+        function previewBeforeUpload(id) {
+            const inputIndex = $(`label#preview-${id} input#${id}`)
+            console.log(inputIndex)
+            $("#" + id).on("change", function (e) {
+                console.log(e.target.id)
+                if (e.target.files.length == 0) {
+                    return;
+                }
+                let file = e.target.files[0];
+                let files = e.target.files;
+                let url = URL.createObjectURL(file);
+                console.log("fileName=>", file);
+                console.log("files=>", files);
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function (event) {
+                        $(`#preview-${id} img`).attr("src", event.target.result);
+
+                    }
+                    file.index = e.target.id
+
+                    reader.readAsDataURL(file);
+                }
+                var input = $('label#preview-' + id);
+                console.log('inputIndex', inputIndex)
+                if (inputIndex.length===0) {
+                    input.append('<input type="text" class="d-none" name="index" value="' + id + '"/>')
+                } else {
+                    input.append('');
+                }
+                console.log('inputIndexLength', inputIndex.length)
+
+                file.index = e.target.id
+                document.querySelector("#preview-" + id + " div").innerText = file.name;
+                document.querySelector("#preview-" + id + " img").src = url;
+            });
+        }
+        previewBeforeUpload("file-1");
+        previewBeforeUpload("file-2");
+        previewBeforeUpload("file-3");
+        previewBeforeUpload("0");
+        previewBeforeUpload("1");
+        previewBeforeUpload("2");
+        previewBeforeUpload("3");
+    </script>
+
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import User from '../models/User'
+import User from '../models/User.js';
 
 const verifyToken = async (req, res, next) => {
     const authHeader = req.headers.authorization
@@ -46,7 +46,7 @@ const verifyTokenAdmin = (req, res, next) => {
     })
 }
 
-exports = {
+export {
     verifyToken,
     verifyTokenAndAuthorization,
     verifyTokenAdmin,

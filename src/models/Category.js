@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
+import mongooseDelete from 'mongoose-delete'
 const { Schema } = mongoose
-// import mongooseDelete from 'mongoose-delete'
 const CategorySchema = new Schema({
     name: {
         type: String,
@@ -9,5 +9,9 @@ const CategorySchema = new Schema({
     },
 })
 
+CategorySchema.plugin(mongooseDelete, {
+    overrideMethods: true,
+    deletedAt: true,
+})
 const Category = mongoose.model('Category', CategorySchema)
-export default Category;
+export default Category
