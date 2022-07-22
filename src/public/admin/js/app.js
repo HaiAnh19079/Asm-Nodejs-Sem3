@@ -54,4 +54,18 @@ $(document).ready(function () {
         allowClear: true,
         minimumResultsForSearch: Infinity,
     })
+    $('.select2-multiple-size-edit').select2({
+        placeholder: 'size',
+        multiple: true,
+        allowClear: true,
+        tags: true,
+        minimumResultsForSearch: Infinity,
+    })
+
+    $('.select2-multiple-color-edit').select2({
+        placeholder: 'color',
+        tags:true,
+        allowClear: true,
+        minimumResultsForSearch: Infinity,
+    })
 })

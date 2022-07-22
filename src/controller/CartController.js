@@ -31,7 +31,10 @@ class CartController {
         let qtyInt = parseInt(qty, 10)
         console.log('qtyInt',qtyInt)
         const cart = new Cart(req.session.cart ? req.session.cart : {})
+        if(req.session.user){
+            cart.user = req.session.user._id;
 
+        }
         const product = await Product.findById(productId)
         if (!product) {
             return res.redirect('/products')

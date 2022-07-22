@@ -206,8 +206,6 @@ $(document).ready(function () {
         $('.form-add-to-cart').submit()
     })
     var proQty = $('.pro-qty-2')
-    // proQty.prepend('<span class="fa fa-angle-left dec qtybtn"></span>');
-    // proQty.append('<span class="fa fa-angle-right inc qtybtn"></span>');
     proQty.on('click', '.qtybtn', function () {
         var $button = $(this)
         var oldValue = $button.parent().find('input').val()
@@ -235,10 +233,8 @@ $(document).ready(function () {
             success: function (product) {
                 const imgs = product.images
                 console.log('imgs', imgs)
-                $('.nav.nav-tabs.img-tabs.img-qv')
-                $('.tab-content.img-qv')
-                var imgContent = ''
-                var html = ''
+                let imgContent = ''
+                let html = ''
                 for (let i = 0; i < imgs.length; i++) {
                     // const element = imgs[i]
                     console.log('i', i)
@@ -277,9 +273,9 @@ $(document).ready(function () {
                         </div>
                         `
                     }
-                }
-                $('.nav.nav-tabs.img-tabs.img-qv').append(html)
-                $('.tab-content.img-qv').append(imgContent)
+                };
+                $('.nav.nav-tabs.img-tabs.img-qv').html(html)
+                $('.tab-content.img-qv').html(imgContent)
 
                 $('.tab-item').each(function (index, tab) {
                     const pane = $('.tab-pane')[index]
@@ -300,8 +296,6 @@ $(document).ready(function () {
                     let last = bg.slice(9)
                     $(this).css('background-image', `url(\\${first}\\${last})`)
                 })
-                // $('.img-modal').attr('src', `${product.image[0]}`)
-                // $('.img-modal').attr('data-thumb', `${product.image[0]}`)
                 $('#product-name').text(product.name)
                 $('#product-price').text('$' + product.price)
                 $('#product-desc').text(product.description)
@@ -311,7 +305,6 @@ $(document).ready(function () {
                     var s = `<option value="${product.sizes[i]}" style="padding:0 10px;font-size:16px;">Size ${product.sizes[i]}</option>`
                     $('#product-size').append(s)
                 }
-                //  $('.add-cart-btn.add-link').attr('href',`/cart/add/${product._id}`)
                 $('.form-add-to-cart').attr(
                     'action',
                     `/cart/add/${product._id}`

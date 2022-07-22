@@ -127,10 +127,14 @@ class AdminController {
             }
 
             const genders = product.genders
-            const arrgenders = ['male', 'female']
+            console.log(genders);
+            
+            let arrgenders = ['male', 'female']
             let genderNotSelected = arrgenders.filter(value => {
-                genders.every(v => !value.includes(v))
+                return genders.every(v => !v.includes(value))
             })
+            console.log('genderNotSelected:',genderNotSelected);
+            
             let categoryNotSelected = categories.filter(value =>
                 catOfProduct.every(v => !v.name.includes(value.name))
             )

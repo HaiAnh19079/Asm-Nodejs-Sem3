@@ -2,7 +2,7 @@ export default function Cart(oldCart) {
     this.items = oldCart.items || {};
     this.totalQty = oldCart.totalQty || 0;
     this.totalPrice = oldCart.totalPrice || 0;
-
+    // this.user = req.session.user._id;
     this.add = function (item, id,qty,size,color) {
         let storedItem = this.items[id];
         if (!storedItem) {

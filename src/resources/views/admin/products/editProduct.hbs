@@ -76,7 +76,7 @@
                                             <div class="tab-pane active">
                                                 <div class="form-group position-relative">
                                                     <label for="select2Size" class="sizeLabel">Size</label>
-                                                    <select class="form-control select2-multiple-size" id="select2Size"
+                                                    <select class="form-control select2-multiple-size-edit" id="select2Size"
                                                         multiple="multiple" name="sizes">
                                                         {{#each product.sizes }}
                                                         <option value='{{this}}' selected="selected">{{this}}</option>
@@ -91,7 +91,7 @@
                                     <div class="col-6">
                                         <div class="form-group position-relative">
                                             <label for="color">Color</label>
-                                            <select class="form-control select2-multiple-color" name="colors"
+                                            <select class="form-control select2-multiple-color-edit" name="colors"
                                                 multiple="multiple">
                                                 {{#each product.colors }}
                                                 <option value='{{this}}' selected="selected">{{this}}</option>
