@@ -1,11 +1,11 @@
 {
-  _id: new ObjectId("62da01b7ae3231d2a29f1b46"),
-  email: 'testClient@gmail.com',
-  password: '$2a$10$fq5BHb6vfnmoLEOI2TNIUeMV.b57EE9TbJTHQRZAqw3z3O5NBmpmu',
+  _id: new ObjectId("62daa882dafb981a25cf6d87"),
+  email: 'test2@gmail.com',
+  password: '$2a$10$6JoT61cNApyFUMgKo1eRwO5rxF2NDjRqRGIFmFtXUxuiqXHIc46l6',
   avatar: 'path image demo',
   role: 'user',
-  createdAt: 2022-07-22T01:47:35.157Z,
-  updatedAt: 2022-07-22T01:47:35.157Z,
+  createdAt: 2022-07-22T13:39:14.075Z,
+  updatedAt: 2022-07-22T13:39:14.075Z,
   __v: 0,
-  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGEwMWI3YWUzMjMxZDJhMjlmMWI0NiIsImlhdCI6MTY1ODQ5Njg0NCwiZXhwIjozMzIyMTc3Njg4fQ.TJijDGWWTOeTh45f1EAYCYNbmR0Zo8Twl_DLayp8qxk'
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGFhODgyZGFmYjk4MWEyNWNmNmQ4NyIsImlhdCI6MTY1ODQ5NzE2OCwiZXhwIjozMzIyMTc4MzM2fQ.tsdiGYWyV5YVLrGIJEpscyK_hc-EHq5MCbAmPsyqy2A'
 }
