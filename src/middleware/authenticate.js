@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import User from '../models/User.js';
+import User from '../models/User.js'
 
 const verifyToken = async (req, res, next) => {
     const authHeader = req.headers.authorization
@@ -19,7 +19,19 @@ const verifyToken = async (req, res, next) => {
         })
     }
 }
-
+const sessionCheck = async (req, res, next) => {
+    if (req.session.user ) {
+        console.log('123456')
+        next()
+    } else {
+        if(req.user){
+            console.log('req.user',req.user)
+        }
+        console.log('else next');
+        
+        next()
+    }
+}
 const verifyTokenAndAuthorization = (req, res, next) => {
     verifyToken(req, res, () => {
         if (req.user.id === req.params.id || req.user.role === 'admin') {
@@ -46,8 +58,4 @@ const verifyTokenAdmin = (req, res, next) => {
     })
 }
 
-export {
-    verifyToken,
-    verifyTokenAndAuthorization,
-    verifyTokenAdmin,
-}
+export { verifyToken, verifyTokenAndAuthorization, verifyTokenAdmin ,sessionCheck}

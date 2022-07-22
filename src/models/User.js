@@ -8,11 +8,11 @@ dotenv.config()
 const { Schema } = mongoose
 const UserSchema = new Schema(
     {
-        name: {
-            type: String,
-            required: [true, 'Please enter your name'],
-            maxLength: [30, 'Name cannot exceed 30 characters'],
-        },
+        // name: {
+        //     type: String,
+        //     required: [true, 'Please enter your name'],
+        //     maxLength: [30, 'Name cannot exceed 30 characters'],
+        // },
         email: {
             type: String,
             required: [true, 'Please enter your email address'],

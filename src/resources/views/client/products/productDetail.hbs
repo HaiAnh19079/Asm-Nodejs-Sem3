@@ -1,406 +1,369 @@
 <section class="section__breadcrumb">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h4 class="breadcrumb-title">
-                            Product Details
-                        </h4>
-                        <div class="breadcrumb__links">
-                            <a href="./Shop.html">Shop
-                                <!-- <i class="fas fa-chevron-right"></i> -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="breadcrumb-title">
+                    Product Details
+                </h4>
+                <div class="breadcrumb__links">
+                    <a href="/products">Shop</a>
+                    <span>{{product.name}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="product__details">
+    <div class="product__detail-img">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <ul class="nav nav-tabs img-tabs">
+                        {{#each product.images}}
+                        {{#with product.images.[0]}}
+                        <li class="tab-item active">
+                            <a href="#tabs-{{this.index}}" class="tab-link">
+                                <div class="product-thumb-item set-bg" data-setbg="{{this.url}}"
+                                    style="background-image: url()">
+                                </div>
                             </a>
-                            <span>product name</span>
+                        </li>
+                        {{/with}}
+                        <li class="tab-item active">
+                            <a href="#tabs-{{this.index}}" class="tab-link">
+                                <div class="product-thumb-item set-bg" data-setbg="{{this.url}}"
+                                    style="background-image: url()">
+                                </div>
+                            </a>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="tab-content">
+                        {{#each product.images}}
+                        <div class="tab-pane" id="tabs-{{this.index}}">
+                            <div class="product-img-item">
+                                <img src="{{this.url}}" alt="">
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="product__detail-content">
+        <div class="container">
+            <form action="/cart/add/{{product._id}}" class="form-add-to-cart" method="POST">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="product__detail-info">
+                            <h4 class="detail-name">
+                                {{product.name}}
+                            </h4>
+                            <h3 class="detail-price">${{product.price}}</h3>
+                            <p class="detail-desc">{{product.desc}}</p>
+                            </p>
+                        </div>
+                        <div class="row product__detail-options">
+                            <div class="col-lg-6 detail-size-option">
+                                <span class="title-option">Size: </span>
+                                <div class="option-item size">
+                                    {{#each product.sizes}}
+                                    <label for="{{this}}" class="label-size">
+                                        {{this}}
+                                        <input type="radio" name="size" id="{{this}}" value="{{this}}">
+                                    </label>
+                                    {{/each}}
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 detail-color-option">
+                                <span class="title-option">Color: </span>
+                                <div class="option-item color">
+                                    {{#each product.colors}}
+                                    <label for="{{this}}" class="label-color">
+                                        <input type="radio" name="color" id="{{this}}" value="{{this}}">
+                                    </label>
+                                    {{/each}}
+
+                                </div>
+                            </div>
+                            <div class="col-lg-12 detail-cart-option d-flex justify-content-center align-items-center">
+                                <div class="quantity">
+                                    <input type="number" name="qty" id="qty" value="1">
+                                </div>
+                                <div class="m-2"></div>
+                                <button type="submit" class="add-to-cart js-addcart-detail">Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="related-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="related-title">Related Product</h3>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-lg-3 col-md-6 col-sm-6 ">
+                <div class="product__item">
+                    <div class="product__item-img">
+                        <img src="" alt="product-1">
+                        <a href="#" class="quick-view-btn js-modal-quick-view js-addcart-detail">Quick
+                            view</a>
+                    </div>
+                    <div class="product__item-text">
+                        <div class="text-header">
+                            <div class="product-title">
+                                <h6>Piqué Biker Jacket
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <h3>$67.24</h3>
+                        </div>
+                        <div class="product-color-select">
+                            <label class="" for="p1-c1">
+                                <input type="radio" class="color-input" id="p1-c1">
+                            </label>
+                            <label class="black" for="p1-c2">
+                                <input type="radio" class="color-input" id="p1-c2">
+                            </label>
+                            <label class="grey" for="p1-c3">
+                                <input type="radio" class="color-input" id="p1-c3">
+                            </label>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section class="product__details">
-            <div class="product__detail-img">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <ul class="nav nav-tabs img-tabs">
-                                <li class="tab-item active">
-                                    <a href="#tabs-1" class="tab-link">
-                                        <div class="product-thumb-item set-bg"
-                                            data-setbg="client/img/product/product-9-1.webp"
-                                            style="background-image: url()">
-
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class=" tab-item">
-                                    <a href="#tabs-2" class="tab-link">
-                                        <div class="product-thumb-item set-bg"
-                                            data-setbg="client/img/product/product-9-2.webp"
-                                            style="background-image: url()">
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="tab-item">
-                                    <a href="#tabs-3" class="tab-link">
-                                        <div class="product-thumb-item set-bg"
-                                            data-setbg="client/img/product/product-9-3.webp"
-                                            style="background-image: url()">
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="tabs-1">
-                                    <div class="product-img-item">
-                                        <img src="client/img/product/product-9-1.webp" alt="">
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="tabs-2">
-                                    <div class="product-img-item">
-                                        <img src="client/img/product/product-9-2.webp" alt="">
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="tabs-3">
-                                    <div class="product-img-item">
-                                        <img src="client/img/product/product-9-3.webp" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item-img">
+                        <img src="" alt="product-1">
+                        <a href="#" class="quick-view-btn js-modal-quick-view js-addcart-detail">Quick
+                            view</a>
                     </div>
-                </div>
-            </div>
-
-            <div class="product__detail-content">
-                <div class="container">
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-lg-8">
-                            <div class="product__detail-info">
-                                <h4 class="detail-name">
-                                    Hooded thermal anorak
-                                </h4>
-                                <h3 class="detail-price">$270</h3>
-                                <p class="detail-desc">Coat with quilted lining and an adjustable hood. Featuring long
-                                    sleeves with adjustable cuff tabs, adjustable asymmetric hem with elastic side tabs
-                                    and a front zip fastening with placket
-                                </p>
+                    <div class="product__item-text">
+                        <div class="text-header">
+                            <div class="product-title">
+                                <h6>Piqué Biker Jacket
+                                </h6>
                             </div>
-                            <div class="row product__detail-options">
-                                <div class="col-lg-6 detail-size-option">
-                                    <span class="title-option">Size: </span>
-                                    <div class="option-item">
-                                        <label for="xs" class="label-size">
-                                            XS
-                                            <input type="radio" name="size" id="xs">
-                                        </label>
-                                        <label for="sm" class="label-size">
-                                            S
-                                            <input type="radio" name="size" id="sm">
-                                        </label>
-                                        <label for="md" class="label-size">
-                                            M
-                                            <input type="radio" name="size" id="md">
-                                        </label>
-                                        <label for="xl" class="label-size">
-                                            XL
-                                            <input type="radio" name="size" id="xl">
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 detail-color-option">
-                                    <span class="title-option">Color: </span>
-                                    <div class="option-item">
-                                        <label for="#0b090c" class="label-color">
-                                            <input type="radio" name="color" id="#0b090c">
-                                        </label>
-                                        <label for="#20315f" class="label-color">
-                                            <input type="radio" name="color" id="#20315f">
-                                        </label>
-                                        <label for="#f1af4d" class="label-color">
-                                            <input type="radio" name="color" id="#f1af4d">
-                                        </label>
-                                        <label for="#ed1c24" class="label-color">
-                                            <input type="radio" name="color" id="#ed1c24">
-                                        </label>
-                                        <label for="#fff" class="label-color">
-                                            <input type="radio" name="color" id="#fff">
-                                        </label>
-                                    </div>
-                                </div>
-                                <div
-                                    class="col-lg-12 detail-cart-option d-flex justify-content-center align-items-center">
-                                    <div class="quantity">
-                                        <input type="number" name="qty" id="qty" value="1">
-                                    </div>
-                                    <div class="m-2"></div>
-                                    <button type="submit" class="add-to-cart js-addcart-detail">Add to cart</button>
-                                </div>
-                            </div>
+                        </div>
+                        <div class="product-price">
+                            <h3>$67.24</h3>
+                        </div>
+                        <div class="product-color-select">
+                            <label class="" for="p2-c1">
+                                <input type="radio" class="color-input" id="p2-c1">
+                            </label>
+                            <label class="black" for="p2-c2">
+                                <input type="radio" class="color-input" id="p2-c2">
+                            </label>
+                            <label class="grey" for="p2-c3">
+                                <input type="radio" class="color-input" id="p2-c3">
+                            </label>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section class="related-product">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h3 class="related-title">Related Product</h3>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item-img">
+                        <img src="" alt="product-1">
+                        <a href="#" class="quick-view-btn js-modal-quick-view js-addcart-detail">Quick
+                            view</a>
                     </div>
-                </div>
-                <div class="row ">
-                    <div class="col-lg-3 col-md-6 col-sm-6 ">
-                        <div class="product__item">
-                            <div class="product__item-img">
-                                <img src="client/img/product/product-1.jpg.webp" alt="product-1">
-                                <a href="#" class="quick-view-btn js-modal-quick-view js-addcart-detail">Quick
-                                    view</a>
-                            </div>
-                            <div class="product__item-text">
-                                <div class="text-header">
-                                    <div class="product-title">
-                                        <h6>Piqué Biker Jacket
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="product-price">
-                                    <h3>$67.24</h3>
-                                </div>
-                                <div class="product-color-select">
-                                    <label class="" for="p1-c1">
-                                        <input type="radio" class="color-input" id="p1-c1">
-                                    </label>
-                                    <label class="black" for="p1-c2">
-                                        <input type="radio" class="color-input" id="p1-c2">
-                                    </label>
-                                    <label class="grey" for="p1-c3">
-                                        <input type="radio" class="color-input" id="p1-c3">
-                                    </label>
-                                </div>
+                    <div class="product__item-text">
+                        <div class="text-header">
+                            <div class="product-title">
+                                <h6>Piqué Biker Jacket
+                                </h6>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item-img">
-                                <img src="client/img/product/product-2.jpg.webp" alt="product-1">
-                                <a href="#" class="quick-view-btn js-modal-quick-view js-addcart-detail">Quick
-                                    view</a>
-                            </div>
-                            <div class="product__item-text">
-                                <div class="text-header">
-                                    <div class="product-title">
-                                        <h6>Piqué Biker Jacket
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="product-price">
-                                    <h3>$67.24</h3>
-                                </div>
-                                <div class="product-color-select">
-                                    <label class="" for="p2-c1">
-                                        <input type="radio" class="color-input" id="p2-c1">
-                                    </label>
-                                    <label class="black" for="p2-c2">
-                                        <input type="radio" class="color-input" id="p2-c2">
-                                    </label>
-                                    <label class="grey" for="p2-c3">
-                                        <input type="radio" class="color-input" id="p2-c3">
-                                    </label>
-                                </div>
-                            </div>
+                        <div class="product-price">
+                            <h3>$67.24</h3>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item-img">
-                                <img src="client/img/product/product-3.jpg.webp" alt="product-1">
-                                <a href="#" class="quick-view-btn js-modal-quick-view js-addcart-detail">Quick
-                                    view</a>
-                            </div>
-                            <div class="product__item-text">
-                                <div class="text-header">
-                                    <div class="product-title">
-                                        <h6>Piqué Biker Jacket
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="product-price">
-                                    <h3>$67.24</h3>
-                                </div>
-                                <div class="product-color-select">
-                                    <label class="" for="p3-c1">
-                                        <input type="radio" class="color-input" id="p3-c1">
-                                    </label>
-                                    <label class="black" for="p3-c2">
-                                        <input type="radio" class="color-input" id="p3-c2">
-                                    </label>
-                                    <label class="grey" for="p3-c3">
-                                        <input type="radio" class="color-input" id="p3-c3">
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item-img">
-                                <img src="client/img/product/product-4.jpg.webp" alt="product-1">
-                                <a href="#" class="quick-view-btn js-modal-quick-view js-addcart-detail">Quick
-                                    view</a>
-                            </div>
-                            <div class="product__item-text">
-                                <div class="text-header">
-                                    <div class="product-title">
-                                        <h6>Piqué Biker Jacket
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="product-price">
-                                    <h3>$67.24</h3>
-                                </div>
-                                <div class="product-color-select">
-                                    <label class="" for="p4-c1">
-                                        <input type="radio" class="color-input" id="p4-c1">
-                                    </label>
-                                    <label class="black" for="p4-c2">
-                                        <input type="radio" class="color-input" id="p4-c2">
-                                    </label>
-                                    <label class="grey" for="p4-c3">
-                                        <input type="radio" class="color-input" id="p4-c3">
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item-img">
-                                <img src="client/img/product/product-5.jpg.webp" alt="product-1">
-                                <a href="#" class="quick-view-btn js-modal-quick-view js-addcart-detail">Quick
-                                    view</a>
-                            </div>
-                            <div class="product__item-text">
-                                <div class="text-header">
-                                    <div class="product-title">
-                                        <h6>Piqué Biker Jacket
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="product-price">
-                                    <h3>$67.24</h3>
-                                </div>
-                                <div class="product-color-select">
-                                    <label class="" for="p5-c1">
-                                        <input type="radio" class="color-input" id="p5-c1">
-                                    </label>
-                                    <label class="black" for="p5-c2">
-                                        <input type="radio" class="color-input" id="p5-c2">
-                                    </label>
-                                    <label class="grey" for="p5-c3">
-                                        <input type="radio" class="color-input" id="p5-c3">
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item-img">
-                                <img src="client/img/product/product-6.jpg.webp" alt="product-1">
-                                <a href="#" class="quick-view-btn js-modal-quick-view js-addcart-detail">Quick
-                                    view</a>
-                            </div>
-                            <div class="product__item-text">
-                                <div class="text-header">
-                                    <div class="product-title">
-                                        <h6>Piqué Biker Jacket
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="product-price">
-                                    <h3>$67.24</h3>
-                                </div>
-                                <div class="product-color-select">
-                                    <label class="" for="p6-c1">
-                                        <input type="radio" class="color-input" id="p6-c1">
-                                    </label>
-                                    <label class="black" for="p6-c2">
-                                        <input type="radio" class="color-input" id="p6-c2">
-                                    </label>
-                                    <label class="grey" for="p6-c3">
-                                        <input type="radio" class="color-input" id="p6-c3">
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item-img">
-                                <img src="client/img/product/product-7.jpg.webp" alt="product-1">
-                                <a href="#" class="quick-view-btn js-modal-quick-view js-addcart-detail">Quick
-                                    view</a>
-                            </div>
-                            <div class="product__item-text">
-                                <div class="text-header">
-                                    <div class="product-title">
-                                        <h6>Piqué Biker Jacket
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="product-price">
-                                    <h3>$67.24</h3>
-                                </div>
-                                <div class="product-color-select">
-                                    <label class="" for="p7-c1">
-                                        <input type="radio" class="color-input" id="p7-c1">
-                                    </label>
-                                    <label class="black" for="p7-c2">
-                                        <input type="radio" class="color-input" id="p7-c2">
-                                    </label>
-                                    <label class="grey" for="p7-c3">
-                                        <input type="radio" class="color-input" id="p7-c3">
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item-img">
-                                <img src="client/img/product/product-8.jpg.webp" alt="product-1">
-                                <a href="#" class="quick-view-btn js-modal-quick-view js-addcart-detail">Quick
-                                    view</a>
-                            </div>
-                            <div class="product__item-text">
-                                <div class="text-header">
-                                    <div class="product-title">
-                                        <h6>Piqué Biker Jacket
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="product-price">
-                                    <h3>$67.24</h3>
-                                </div>
-                                <div class="product-color-select">
-                                    <label class="" for="p8-c1">
-                                        <input type="radio" class="color-input" id="p8-c1">
-                                    </label>
-                                    <label class="" for="p8-c2">
-                                        <input type="radio" class="color-input" id="p8-c2">
-                                    </label>
-                                    <label class="" for="p8-c3">
-                                        <input type="radio" class="color-input" id="p8-c3">
-                                    </label>
-                                </div>
-                            </div>
+                        <div class="product-color-select">
+                            <label class="" for="p3-c1">
+                                <input type="radio" class="color-input" id="p3-c1">
+                            </label>
+                            <label class="black" for="p3-c2">
+                                <input type="radio" class="color-input" id="p3-c2">
+                            </label>
+                            <label class="grey" for="p3-c3">
+                                <input type="radio" class="color-input" id="p3-c3">
+                            </label>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item-img">
+                        <img src="" alt="product-1">
+                        <a href="#" class="quick-view-btn js-modal-quick-view js-addcart-detail">Quick
+                            view</a>
+                    </div>
+                    <div class="product__item-text">
+                        <div class="text-header">
+                            <div class="product-title">
+                                <h6>Piqué Biker Jacket
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <h3>$67.24</h3>
+                        </div>
+                        <div class="product-color-select">
+                            <label class="" for="p4-c1">
+                                <input type="radio" class="color-input" id="p4-c1">
+                            </label>
+                            <label class="black" for="p4-c2">
+                                <input type="radio" class="color-input" id="p4-c2">
+                            </label>
+                            <label class="grey" for="p4-c3">
+                                <input type="radio" class="color-input" id="p4-c3">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item-img">
+                        <img src="" alt="product-1">
+                        <a href="#" class="quick-view-btn js-modal-quick-view js-addcart-detail">Quick
+                            view</a>
+                    </div>
+                    <div class="product__item-text">
+                        <div class="text-header">
+                            <div class="product-title">
+                                <h6>Piqué Biker Jacket
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <h3>$67.24</h3>
+                        </div>
+                        <div class="product-color-select">
+                            <label class="" for="p5-c1">
+                                <input type="radio" class="color-input" id="p5-c1">
+                            </label>
+                            <label class="black" for="p5-c2">
+                                <input type="radio" class="color-input" id="p5-c2">
+                            </label>
+                            <label class="grey" for="p5-c3">
+                                <input type="radio" class="color-input" id="p5-c3">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item-img">
+                        <img src="" alt="product-1">
+                        <a href="#" class="quick-view-btn js-modal-quick-view js-addcart-detail">Quick
+                            view</a>
+                    </div>
+                    <div class="product__item-text">
+                        <div class="text-header">
+                            <div class="product-title">
+                                <h6>Piqué Biker Jacket
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <h3>$67.24</h3>
+                        </div>
+                        <div class="product-color-select">
+                            <label class="" for="p6-c1">
+                                <input type="radio" class="color-input" id="p6-c1">
+                            </label>
+                            <label class="black" for="p6-c2">
+                                <input type="radio" class="color-input" id="p6-c2">
+                            </label>
+                            <label class="grey" for="p6-c3">
+                                <input type="radio" class="color-input" id="p6-c3">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item-img">
+                        <img src="" alt="product-1">
+                        <a href="#" class="quick-view-btn js-modal-quick-view js-addcart-detail">Quick
+                            view</a>
+                    </div>
+                    <div class="product__item-text">
+                        <div class="text-header">
+                            <div class="product-title">
+                                <h6>Piqué Biker Jacket
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <h3>$67.24</h3>
+                        </div>
+                        <div class="product-color-select">
+                            <label class="" for="p7-c1">
+                                <input type="radio" class="color-input" id="p7-c1">
+                            </label>
+                            <label class="black" for="p7-c2">
+                                <input type="radio" class="color-input" id="p7-c2">
+                            </label>
+                            <label class="grey" for="p7-c3">
+                                <input type="radio" class="color-input" id="p7-c3">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item-img">
+                        <img src="" alt="product-1">
+                        <a href="#" class="quick-view-btn js-modal-quick-view js-addcart-detail">Quick
+                            view</a>
+                    </div>
+                    <div class="product__item-text">
+                        <div class="text-header">
+                            <div class="product-title">
+                                <h6>Piqué Biker Jacket
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <h3>$67.24</h3>
+                        </div>
+                        <div class="product-color-select">
+                            <label class="" for="p8-c1">
+                                <input type="radio" class="color-input" id="p8-c1">
+                            </label>
+                            <label class="" for="p8-c2">
+                                <input type="radio" class="color-input" id="p8-c2">
+                            </label>
+                            <label class="" for="p8-c3">
+                                <input type="radio" class="color-input" id="p8-c3">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

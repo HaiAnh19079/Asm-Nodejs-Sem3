@@ -189,36 +189,28 @@
                     {{#if products}}
 
                     {{#each products}}
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="set-bg product__item-img" data-setbg="{{this.images.[0].url}}">
-                                <a href="#" class="quick-view-btn js-modal-quick-view js-show-modal"
-                                    data-id="{{this._id}}">Quick view</a>
-                            </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="set-bg product__item-img" data-setbg="{{this.images.[0].url}}">
+                                    <a href="#" class="quick-view-btn js-modal-quick-view js-show-modal"
+                                        data-id="{{this._id}}">Quick view</a>
+                                </div>
 
-                            <div class="product__item-text">
-                                <div class="text-header">
-                                    <div class="product-title">
-                                        <h6>{{this.name}}</h6>
+                                <div class="product__item-text">
+                                    <div class="text-header">
+                                        <a href="products/{{this._id}}"class="product-title">
+                                            <h6>{{this.name}}</h6>
+                                        </a>
                                     </div>
-                                </div>
-                                <div class="product-price">
-                                    <h3>${{this.price}}</h3>
-                                </div>
-                                <div class="product-color-select">
-                                    <label class="" for="p1-c1">
-                                        <input type="radio" class="color-input" id="p1-c1">
-                                    </label>
-                                    <label class="black" for="p1-c2">
-                                        <input type="radio" class="color-input" id="p1-c2">
-                                    </label>
-                                    <label class="grey" for="p1-c3">
-                                        <input type="radio" class="color-input" id="p1-c3">
-                                    </label>
+                                    <div class="product-price">
+                                        <h3>${{this.price}}</h3>
+                                    </div>
+                                    {{!-- <div class="product-color-select">
+                                        <a href="/cart/add/{{this._id}}">Add to cart</a>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
-                    </div>
                     {{/each}}
 
                     {{/if}}
@@ -239,3 +231,24 @@
         </div>
     </div>
 </section>
+{{#if session.cart}}
+<div>
+    {{!-- {{session.cart.items}} --}}
+    {{#each session.cart.items.[product.id]}}
+
+    <div>{{session.cart}}</div>
+    <div>{{this.item.name}}</div>
+    {{/each}}
+</div>
+{{/if}}
+{{#if session.products}}
+<div>
+    {{!-- {{session.cart.items}} --}}
+    {{#each session.products}}
+
+
+    <div>{{this.items}}</div>
+    {{!-- <div>{{this.item.qty}}</div> --}}
+    {{/each}}
+</div>
+{{/if}}

@@ -2,10 +2,14 @@ import express from 'express'
 import { engine } from 'express-handlebars'
 import path from 'path'
 import bodyParser from 'body-parser'
+import session from 'express-session'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import route from './routes/index.js'
 import db from './config/db.js'
+import { LocalStorage } from "node-localstorage";
+
+
 db.connect()
 dotenv.config()
 const app = express()
@@ -55,33 +59,15 @@ app.engine(
         },
     })
 )
-// Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
- 
-//     switch (operator) {
-//         case '==':
-//             return (v1 == v2) ? options.fn(this) : options.inverse(this);
-//         case '===':
-//             return (v1 === v2) ? options.fn(this) : options.inverse(this);
-//         case '!=':
-//             return (v1 != v2) ? options.fn(this) : options.inverse(this);
-//         case '!==':
-//             return (v1 !== v2) ? options.fn(this) : options.inverse(this);
-//         case '<':
-//             return (v1 < v2) ? options.fn(this) : options.inverse(this);
-//         case '<=':
-//             return (v1 <= v2) ? options.fn(this) : options.inverse(this);
-//         case '>':
-//             return (v1 > v2) ? options.fn(this) : options.inverse(this);
-//         case '>=':
-//             return (v1 >= v2) ? options.fn(this) : options.inverse(this);
-//         case '&&':
-//             return (v1 && v2) ? options.fn(this) : options.inverse(this);
-//         case '||':
-//             return (v1 || v2) ? options.fn(this) : options.inverse(this);
-//         default:
-//             return options.inverse(this);
-//     }
-// });
+app.use(session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: true
+}));
+app.use(function(req, res, next) {
+    res.locals.session = req.session;
+    next();
+});
 app.set('view engine', '.hbs')
 app.set('views', path.join(path.resolve(), '/src/resources/views/'))
 app.use(express.json())

@@ -10,7 +10,6 @@ class OrderController {
             orderItems,
             paymentMethod,
             taxPrice,
-
             shippingPrice,
         } = req.body
         let note = req.body.note

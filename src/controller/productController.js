@@ -26,11 +26,11 @@ class ProductController {
 
     //[POST]/products modal
     async GetProductQuickView(req, res, next) {
-        var data_id = req.body.id;
+        var data_id = req.body.id
         console.log('data_id', data_id)
-        const product = await Product.findOne({_id:data_id})
-        
-        console.log('product',product)
+        const product = await Product.findOne({ _id: data_id })
+
+        console.log('product', product)
 
         res.json(product)
     }
@@ -65,27 +65,29 @@ class ProductController {
                 message: 'All products have been soft deleted',
             })
         }
-        console.log('products =>', products)
         const totalDocuments = await Product.countDocuments()
         res.render('client/products/products', {
             products: MultipleMongooseToObject(products),
             totalDocuments,
+            // user: req.session.user|| null,
         })
     }
 
     // [GET] api/products/:id
-    getProductById = async (req, res, next) => {
-        let product = await Product.findById(req.params.id)
+    async getProductById(req, res, next) {
+        const product = await Product.findOne({ _id: req.params.id })
         if (!product) {
             return res.status(400).json({
                 success: false,
                 message: 'Product not found !!',
             })
         }
-
-        res.render('client/products/products', {
+        console.log('now');
+        
+        res.render('client/products/productDetail', {
             product: MongooseToObject(product),
         })
+
         // res.status(200).json({
         //     success: true,
         //     product,

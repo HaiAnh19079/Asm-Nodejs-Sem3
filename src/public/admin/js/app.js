@@ -50,6 +50,7 @@ $(document).ready(function () {
 
     $('.select2-multiple-color').select2({
         placeholder: 'color',
+        tags:true,
         allowClear: true,
         minimumResultsForSearch: Infinity,
     })

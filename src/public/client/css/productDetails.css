@@ -36,9 +36,10 @@
     background-position: top center;
     overflow: hidden;
 }
-.tab-content.img-qv{
+.tab-content.img-qv {
     background: #f3f2ee;
-
+    border-radius: 5px;
+    overflow: hidden;
 }
 .product-img-item {
     position: relative;
@@ -82,10 +83,16 @@
 .title-option {
     display: flex;
 }
+.detail-cart-option {
+    padding-top: 40px;
+}
 .title-option {
     font-size: 1.6rem;
     font-weight: 600;
     padding: 0 10px 0 0;
+}
+.option-item label input {
+    display: none;
 }
 .quantity {
     /* padding: 14px 30px; */
