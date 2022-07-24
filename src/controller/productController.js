@@ -1,4 +1,5 @@
 import Product from '../models/Product.js'
+import Category from '../models/Category.js'
 import ErrorHandler from '../utils/errorhandler.js'
 import ApiFeature from '../utils/apiFeature.js'
 import {
@@ -51,7 +52,7 @@ class ProductController {
     // [GET] api/products/
     async getAllProducts(req, res, next) {
         const productDeletedCount = await Product.countDocumentsDeleted()
-
+        const categories = await Category.find()
         const apiFeature = new ApiFeature(Product.find(), req.query)
             .search()
             .filter()
@@ -68,6 +69,7 @@ class ProductController {
         const totalDocuments = await Product.countDocuments()
         res.render('client/products/products', {
             products: MultipleMongooseToObject(products),
+            categories: MultipleMongooseToObject(categories),
             totalDocuments,
             // user: req.session.user|| null,
         })

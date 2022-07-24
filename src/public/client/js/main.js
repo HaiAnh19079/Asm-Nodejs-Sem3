@@ -137,7 +137,6 @@ $(document).ready(function () {
             signInForm.addClass('show')
         }
     }
-
     function openModal() {
         if ($(this).hasClass('js-signup-btn')) {
             modal.addClass('show')
@@ -159,15 +158,12 @@ $(document).ready(function () {
             cartModal.addClass('show')
         }
     }
-
     btnShowModals.each(function (index, btnShow) {
         btnShow.onclick = openModal
     })
-
     switchBtns.each(function (index, switchBtn) {
         switchBtn.onclick = switchForm
     })
-
     hiddenModals.each(function (index, hidden) {
         hidden.onclick = hiddenModal
     })
@@ -183,9 +179,7 @@ $(document).ready(function () {
             swal(nameProduct, 'is added to cart !', 'success')
         })
     })
-    // var windowH = $(window).height();
-    // $('.header-cart').css('height',`${windowH}`)
-    // window.onresize = ()=> $('.header-cart').css('height',`${windowH}`)
+    
     $('.header-cart').css('height', `${window.innerHeight}`)
     $(window).resize(function () {
         $('.header-cart').css('height', `${window.innerHeight}`)
@@ -205,6 +199,22 @@ $(document).ready(function () {
     $('.add-cart-btn').on('click', function () {
         $('.form-add-to-cart').submit()
     })
+    var proQty = $('.pro-qty-1')
+    proQty.on('click', '.qtybtn-qv', function () {
+        var $button = $(this)
+        var oldValue = $button.parent().find('input').val()
+        if ($button.hasClass('inc')) {
+            var newVal = parseFloat(oldValue) + 1
+        } else {
+            // Don't allow decrementing below zero
+            if (oldValue > 0) {
+                var newVal = parseFloat(oldValue) - 1
+            } else {
+                newVal = 0
+            }
+        }
+        $button.parent().find('input').val(newVal)
+    })
     var proQty = $('.pro-qty-2')
     proQty.on('click', '.qtybtn', function () {
         var $button = $(this)
@@ -220,7 +230,8 @@ $(document).ready(function () {
             }
         }
         $button.parent().find('input').val(newVal)
-    })
+    });
+    
 
     $(document).on('click', '.js-modal-quick-view', function () {
         var dataId = $(this).attr('data-id')
@@ -274,12 +285,10 @@ $(document).ready(function () {
                         `
                     }
                 };
-                $('.nav.nav-tabs.img-tabs.img-qv').html(html)
-                $('.tab-content.img-qv').html(imgContent)
-
+                $('.nav.nav-tabs.img-tabs.img-qv').html(html);
+                $('.tab-content.img-qv').html(imgContent);
                 $('.tab-item').each(function (index, tab) {
                     const pane = $('.tab-pane')[index]
-
                     tab.onclick = function (e) {
                         e.preventDefault()
                         $('.tab-item.active').removeClass('active')
@@ -322,26 +331,20 @@ $(document).ready(function () {
 
     $('.set-bg').each(function () {
         let bg = $(this).data('setbg')
-        // console.log(this)
-        // console.log(bg)
         let first = bg.slice(0, 9)
         let last = bg.slice(9)
-        // console.log("first->",first)
-        // console.log("last->",last)
-        // console.log(`url(\\${bg})`);
-
         $(this).css('background-image', `url(\\${first}\\${last})`)
     })
     $('.tab-item').each(function (index, tab) {
         const pane = $('.tab-pane')[index]
-
         tab.onclick = function (e) {
             e.preventDefault()
             $('.tab-item.active').removeClass('active')
             $('.tab-pane.active').removeClass('active')
-
             $(this).addClass('active')
             $(pane).addClass('active')
         }
-    })
+    });
+
+
 })

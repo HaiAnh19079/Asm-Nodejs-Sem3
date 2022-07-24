@@ -1,0 +1,65 @@
+<div class="modal js-modal show">
+        <div class="modal__overlay js-hidden-modal"></div>
+        <div class="modal__body js-modal__body">
+            <!-- Register form -->
+            
+
+            <!-- Login form -->
+            <div class="auth-form form-signin show">
+                <form action="/auth/login" method="POST">
+                    <div class="auth-form__container">
+
+                        <div class="auth-form__header">
+                            <h3 class="auth-form__heading auth-form__signin-btn">Đăng Nhập</h3>
+                            <span class="auth-form__switch-btn auth-form__signup-btn">Đăng Ký</span>
+                        </div>
+
+                        <div class="auth-form_form">
+                            <div class="auth-form__group">
+                                <input type="text" class="auth-form__input" placeholder="Email của bạn" name="email">
+                            </div>
+                            <div class="auth-form__group">
+                                <input type="password" class="auth-form__input" placeholder="Mật khẩu của bạn"
+                                    name="password">
+                            </div>
+                        </div>
+
+                        <div class="auth-form__aside">
+                            <div class="auth-form__help">
+                                <a href="" class="auth-form__help-link help-forgot">Quên mật khẩu</a>
+                                <span class="auth-form__help-separate"></span>
+                                <a href="" class="auth-form__help-link">Cần trợ giúp?</a>
+                            </div>
+                        </div>
+
+                        <div class="auth-form__controls">
+                            {{!-- <button class="btn btn--normal js-hidden-modal">TRỞ LẠI</button> --}}
+                            <button type="submit" class="btn btn--primary">ĐĂNG NHẬP</button>
+                        </div>
+
+                    </div>
+
+                    <div class="auth-form__socials">
+                        <a href="#" class="btn btn--size-s btn--with-icon auth-form__socials-fb mr-4">
+                            <i class="auth-form__socials-icon fab fa-facebook-square"></i>
+                            <span class="auth-form__socials-title">
+                                Đăng nhập với Facebook
+                            </span>
+                        </a>
+                        <a href="#" class="btn btn--size-s btn--with-icon auth-form__socials-gg ml-4">
+                            <i class="auth-form__socials-icon fab fa-google"></i>
+                            <span class="auth-form__socials-title">
+                                Đăng nhập với Google
+                            </span>
+                        </a>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal quickView -->
+            
+
+            <!-- Modal header cart -->
+            
+        </div>
+    </div>

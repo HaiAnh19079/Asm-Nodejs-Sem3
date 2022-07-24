@@ -11,10 +11,10 @@ import {
  from '../middleware/authenticate.js'
 
 function route(app) {
+    app.use('/auth', authRouter)
     app.use('/admin', adminRouter)//verifyTokenAdmin
     app.use('/products', productsRouter)
     app.use('/cart', cartRouter)
-    app.use('/auth', authRouter)
     app.use('/', siteRouter)
 };
 export default route;

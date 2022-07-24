@@ -7,16 +7,17 @@ import {
     MultipleMongooseToObject,
     MongooseToObject,
 } from '../utils/mongoose.js'
+import { resolveNaptr } from 'dns/promises'
 
 class AdminController {
-    //[GET] /admin/
+    //[GET] /admin/home
     index = async (req, res, next) => {
         try {
             const totalProduct = await Product.countDocuments()
             const totalUser = await User.countDocuments()
             const totalCategory = await Category.countDocuments()
             const totalOrder = await Order.countDocuments()
-
+            // if(){return}
             res.render('admin/home', {
                 totalProduct,
                 totalUser,
@@ -28,6 +29,18 @@ class AdminController {
             res.status(500).json({ error: e })
         }
     }
+
+    //[GET] /admin/
+    getLoginPage = async (req, res, next) => {
+        if(!req.cookies.token){
+            res.render('admin/loginPage',{layout: 'loginAdmin'})
+        }else{
+            res.redirect('/admin/home')
+        }
+
+    }
+    //[POST] admin/login 
+    
 
     // [GET] admin/products
     getProducts = async (req, res, next) => {
@@ -127,14 +140,14 @@ class AdminController {
             }
 
             const genders = product.genders
-            console.log(genders);
-            
+            console.log(genders)
+
             let arrgenders = ['male', 'female']
             let genderNotSelected = arrgenders.filter(value => {
                 return genders.every(v => !v.includes(value))
             })
-            console.log('genderNotSelected:',genderNotSelected);
-            
+            console.log('genderNotSelected:', genderNotSelected)
+
             let categoryNotSelected = categories.filter(value =>
                 catOfProduct.every(v => !v.name.includes(value.name))
             )
@@ -167,7 +180,7 @@ class AdminController {
         console.log('data->', data)
         console.log('indexs->', indexs)
         const index = Array.from(new Set(indexs))
-        console.log('index->',index)
+        console.log('index->', index)
         if (Array.isArray(index)) {
             for (var i = 0; i < index.length; i++) {
                 req.files[i].index = index[i]
@@ -184,15 +197,15 @@ class AdminController {
             element.index = file.index
             imagesInput.push(element)
         }
-        console.log('imagesInput',imagesInput)
+        console.log('imagesInput', imagesInput)
         const imgDb = []
-        data.images.forEach(function(img) {
-            const element = {};
+        data.images.forEach(function (img) {
+            const element = {}
             element.url = img.url
             element.index = img.index
             imgDb.push(element)
         })
-        console.log('imgDb',imgDb)
+        console.log('imgDb', imgDb)
         for (let course of imgDb) {
             for (let newCourse of imagesInput) {
                 if (course.index.includes(newCourse.index)) {
@@ -201,12 +214,12 @@ class AdminController {
                 }
             }
         }
-        console.log('imgDb',imgDb)
-        console.log('imagesInput',imagesInput)
+        console.log('imgDb', imgDb)
+        console.log('imagesInput', imagesInput)
         const e = [...imgDb, ...imagesInput]
 
         const set = Array.from(new Set(e))
-        console.log('set',set)
+        console.log('set', set)
         data.images = set
         await Product.updateOne({ _id: req.params.id }, data)
 

@@ -14,7 +14,7 @@ class CategoryController {
                     msg: 'no categories in db!',
                 })
             }
-            res.render('admin/categories', {
+            res.render('admin/categories/categories', {
                 categories: MultipleMongooseToObject(categories),
                 layout: 'admin',
             })

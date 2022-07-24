@@ -17,21 +17,27 @@ const upload = multer({ storage: storage });
 
 import adminController from '../controller/AdminController.js';
 import categoryController from '../controller/CategoryController.js';
-
+import {
+    verifyToken,
+    verifyTokenAndAuthorization,
+    verifyTokenAdmin,
+}
+ from '../middleware/authenticate.js'
 //home
-router.get('/', adminController.index);
+router.get('/', adminController.getLoginPage);
+router.get('/home', adminController.index);
 
 //products
-router.get('/products', adminController.getProducts);
-router.get('/product/new', adminController.createProduct);
-router.post('/product/new', upload.array('images'), adminController.saveCreate);
-router.get('/product/:id/edit', adminController.editProduct);
-router.post('/product/:id/edit', upload.array('imageupdate'), adminController.saveUpdate);
+router.get('/products',verifyTokenAdmin, adminController.getProducts);
+router.get('/product/new',verifyTokenAdmin, adminController.createProduct);
+router.post('/product/new',verifyTokenAdmin, upload.array('images'), adminController.saveCreate);
+router.get('/product/:id/edit',verifyTokenAdmin, adminController.editProduct);
+router.post('/product/:id/edit',verifyTokenAdmin, upload.array('imageupdate'), adminController.saveUpdate);
 
 //category
-router.get('/categories', categoryController.index);
-router.get('/category/new', adminController.createCategory);
-router.post('/category/new', adminController.saveCreateCat);
+router.get('/categories',verifyTokenAdmin, categoryController.index);
+router.get('/category/new',verifyTokenAdmin, adminController.createCategory);
+router.post('/category/new',verifyTokenAdmin, adminController.saveCreateCat);
 
 
 export default router;

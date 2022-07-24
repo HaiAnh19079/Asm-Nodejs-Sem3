@@ -1,12 +1,11 @@
 import ErrorHandler from '../utils/errorhandler.js'
+import Cart from '../models/Cart.js'
 import User from '../models/User.js'
 import jwt from 'jsonwebtoken'
 import {
     MultipleMongooseToObject,
     MongooseToObject,
 } from '../utils/mongoose.js'
-import { LocalStorage } from "node-localstorage";
-global.localStorage = new LocalStorage('./scratch');
 class AuthController {
     //[POST] /api/auth/register
     register = async (req, res, next) => {
@@ -58,26 +57,39 @@ class AuthController {
         }
         const token = user.generateJWT()
         user.token = token
-        const options = {
-            expires: new Date(
-                Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
-            ),
-            httpOnly: true,
-        }
-        console.log('user->', user)
-        localStorage.setItem('user', user);
-        // localStorage.setItem(PLAYER_STRORAGE_KEY, JSON.stringify(this.config))
+
+        // console.log('user->', user)
         // res.status(200).cookie('token', token, options)
         // .json({
         //     success: true,
         //     user,
         // })
-        if(user){
-            req.session.user = user
-            
-            res.redirect('/')
+        console.log('cart', req.session.cart)
+
+        if (user) {
+            // req.session.user = user
+            if (req.session.cart) {
+                let cartUser = { ...req.session.cart }
+                cartUser.user = user._id
+                const cart = new Cart(cartUser)
+                console.log('cartU', cart)
+            }
+             res.cookie('token', token, {
+                httpOnly: true,
+                maxAge: 3 * 60 * 60*1000,
+            })
+            if (user.role === 'admin') {
+                console.log(user.role)
+
+                res.redirect('/admin/home')
+            }
+            if (user.role === 'user') {
+                console.log(user.role)
+
+                res.redirect('back')
+            }
         }
-        
+        // res.redirect('back')
     }
 
     // [GET] /api/users/logout
@@ -94,10 +106,10 @@ class AuthController {
             expiresIn: new Date(Date.now()),
             httpOnly: true,
         })
-        res.status(200).json({
-            success: true,
-            message: 'Logged Out',
-        })
+        // res.status(200).json({
+        //     success: true,
+        //     message: 'Logged Out',
+        // })
         res.redirect('/')
     }
 }

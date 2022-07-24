@@ -2,6 +2,7 @@ import express from 'express'
 import { engine } from 'express-handlebars'
 import path from 'path'
 import bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import cors from 'cors'
 import dotenv from 'dotenv'
@@ -71,6 +72,7 @@ app.use(function(req, res, next) {
 app.set('view engine', '.hbs')
 app.set('views', path.join(path.resolve(), '/src/resources/views/'))
 app.use(express.json())
+app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 

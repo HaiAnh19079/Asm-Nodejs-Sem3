@@ -1,0 +1,142 @@
+<section class="section__breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="breadcrumb-title">
+                    Home
+                </h4>
+                <div class="breadcrumb__links">
+                    <a href="#">User
+                        <!-- <i class="fas fa-chevron-right"></i> -->
+                    </a>
+                    <span>Shopping Cart</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="shopping-cart space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="shopping-cart-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#if session.cart}}
+                            {{#each products}}
+                            <tr>
+                                <td class="cart__item">
+                                    <div class="cart__item__pic">
+                                        <img src="{{this.item.images.[0].url}}" alt="">
+                                    </div>
+                                    <div class="cart__item__text">
+                                        <h6>{{this.item.name}}</h6>
+                                        <h5>${{this.item.price}}</h5>
+                                    </div>
+                                </td>
+                                <td class="cart__item__quantity">
+                                    <div class="quantity-item">
+                                        <div class="pro-qty-2">
+                                            <span class="fa fa-angle-left dec qtybtn"></span>
+                                            <input type="text" value="{{this.qty}}">
+                                            <span class="fa fa-angle-right inc qtybtn"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="cart__price">${{this.price}}</td>
+                                <td class="cart__close"><i class="fas fa-times"></i></td>
+                            </tr>
+                            {{/each}}
+                            {{else}}
+                            <tr>
+                                <td class="cart__item">
+                                    <div class="cart__item__pic">
+                                        <img src="data:image/webp;base64,UklGRrwDAABXRUJQVlA4ILADAADQEQCdASpaAFoAPm0wlEckIqIhK5J6cIANiWUA1PfvQqkDPQB5YHQt3GP/S31VsofAOg3tdlYsGNN5PN/3HmOiqpPxaRCJW7LluVk1/mxYhs0Z27QgwmDi5FsrXoyrBLMItj7tEj/4054De9LCL7IKV/ACfatWcCezZbbY2n9VB9BuqM3z0zXHDad1LGEyd1Zp7Hv2a3AAAP77lAAHpW+eUvTFxvTsfYpeqhxfl98r3IWpfjPDHPrluc+F3LzMeei5hKIAYfpuf3D4H4wkuF8GdsfGEYqvBctrqjWU/kPSXQDehdCyibBBcmtaDaGOW/7UfUep7e/RfklsWVtA6oE3dkMIs1BppGC7+4+825Ee26FCjHtgsvuijeiJPrYQPgP5uSA9v+NzuU7U7ZybyUpbe4H8cZwpwyZoZX/KlC3oFeT4JYmA4cpW9Wgdea+NTRH0E9bfKp+UIyi9g4t+lJmFSlhiF+Y1u9zEOL1yKKa9xJAOlPWqmI4+ZTrQtB2vcs7MnDo7RlORer70pre5ebb5ToBcZS8tDjohEMn3rHYPMFeHC0aIXyrGsVarKCCaesXZIh2asW/gAnnUA59Mc36l8MVsWd5z2Fu60pTidzft2wIKUFW5JQ/PwVz8oaq5gn39rPtzpOXusg3O9fZgsH2HGPMEvazWf0XLi3dBM2Tcn3XdmJzssl0RJwmjlToUQaCE4v0itWYiqrZkMfZuBt6t/BnYP1aGkVEUX5a/S9ztxEXD3w0ncstrNUaoSlRPAwFb9Y0oI1QHkACwP7LSgNsd7gGg6A1ljFHEIkKkdm+N1jGMDGGuD6/1RTTtHDCxnbemgHJX+DFpcwZUYd/kz6jbt7Ws3RNPzgla8YYn5iiIac9PxTgzcdC8Je8I8qyM+WKJ4r9Ewetn8S+pvdSEhsrhSG7vBpqKKkYz+gTqyXTR/DEvqxCNbAOlIrEj0/YZEf3v4D0owspcdU69Qe7nBxFYXJZztdZRYAbfAphqg11XnDfs4IFhNKH1MOAAoXQAAeK8eyIAAide6oCxZZX92w6kawZTAuT5nwa0W4D/F/A9EqZE/S5oQrVFORwpJEV8qiZsExsKryxporTpmIzpplGJs6j34e37TfIUWNkJpMOumLvKCCdeaFLv9pa3Mpm8Xx1/wrZ0AF3LdVSIJc2eQJuNkzV/KuJCI0l/VH1FG+hq11Q0kdgzZDMwT6BBr1KD4nc3xSzheUd1E1kDkTNOz2jGix4Mzz0wao97gm9JwQAAAA=="
+                                            alt="">
+                                    </div>
+                                    <div class="cart__item__text">
+                                        <h6>T-shirt Contrast Pocket</h6>
+                                        <h5>$98.49</h5>
+                                    </div>
+                                </td>
+                                <td class="cart__item__quantity">
+                                    <div class="quantity-item">
+                                        <div class="pro-qty-2">
+                                            <span class="fa fa-angle-left dec qtybtn"></span>
+                                            <input type="text" value="1">
+                                            <span class="fa fa-angle-right inc qtybtn"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="cart__price">$ 30.00</td>
+                                <td class="cart__close"><i class="fas fa-times"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="cart__item">
+                                    <div class="cart__item__pic">
+                                        <img src="data:image/webp;base64,UklGRoACAABXRUJQVlA4IHQCAADwCwCdASpaAFoAPm0ylkgkIqIhJHM60IANiWkABv88xnXDW8JMuBYmBqCVjKX+bJ61ZNOv8vBTb/2olrvuMKCzpqnr6p34lAhYUVXxjQmjPJgrJvocB8V2WpctoPCWWuue1RKrmZIuAAD++h0rE3PTeRjoF8TKOaZQuLPABfAPKenUmL0E9/fIKi28wkgK//5T/8jSlz62l7+efVYgwZpkqPm96qdhuFz97pJVDMX0n05J829zh3zo8RTn1sxidxmxaeWYsoPB3bgGUNlW6ixH2LUa6dOlpUs3Nd7JA1q+6j5DwyfV73pUqUuD/78cIzfWL/5yHj6DYJSHCS3XRyRRO/3wpXMf5nPWIQGnYJxdhT3U8SLNo/QipW4pGF5wfkyMceZR3QAP5j1GkcyxLBn+D4ARAMJyrUvBNXzy/z8dO0eCcLUGTheKcszqvp8v+rK6oPSQrFhnkYn6n89MGjUP+BxG62b3kzZ50EyzKYHeKMgIeP/6LTmC8I/L/rIN3VZjrbHbOK/kLs+yoOkhad79lNZP+nV4tI63ejzv6TlkT8eVh1vgRq54/FPgCGwk3JTyaBZ+SltY0oVB838YVIY7sp4Ad5zWzaoydHuXTIgAgloQ0HRPIIEdOtF+gjJsPezj7ZoCiCa3qPo8CEsMrFVO2JNyne9u0lCUSHLVgwIG19PTO5ZAU+SPUMeHS/6d9XUNmqvxo3VQW7o3wbOXtrxedJVyfcWh1d/UimHdv0JzOP74PuFYfRYk8iWBrjE2p0WK3Nb0Ou5pwF8lriv6T5FAxkDpYzj4WISqs5PlriefWT2J19RSh5XB3AgT3/5ctIulNAAA"
+                                            alt="">
+                                    </div>
+                                    <div class="cart__item__text">
+                                        <h6>Diagonal Textured Cap</h6>
+                                        <h5>$98.49</h5>
+                                    </div>
+                                </td>
+                                <td class="cart__item__quantity">
+                                    <div class="quantity-item">
+                                        <div class="pro-qty-2">
+                                            <span class="fa fa-angle-left dec qtybtn"></span>
+                                            <input type="text" value="1">
+                                            <span class="fa fa-angle-right inc qtybtn"></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="cart__price">$ 32.50</td>
+                                <td class="cart__close"><i class="fas fa-times"></i></td>
+                            </tr>
+                            {{/if}}
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="continue-btn">
+                            <a href="#" class="continue-link">Continue Shopping</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="continue-btn float-right">
+
+                            <a href="#" class="continue-link"><i class="fas fa-spinner"></i>Update Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="cart-total">
+                    <h6>Cart Total</h6>
+                    <div class="total-list">
+                        <div class="sub-total">Subtotal
+                            <span>${{cartTotalPrice}}</span>
+                        </div>
+                        <div class="total">ToTal
+                            <span>${{cartTotalPrice}}</span>
+                        </div>
+                    </div>
+                    <div class="checkout-btn">Proceed To Checkout</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

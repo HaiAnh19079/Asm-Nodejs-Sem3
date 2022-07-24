@@ -45,6 +45,11 @@
                                     <div class="card-body">
                                         <div class="shop__sidebar-category shop__sidebar-scroll">
                                             <ul class="shop-scroll">
+                                                {{#if categories}}
+                                                {{#each categories}}
+                                                    <li><a href="#">{{this.name}}</a></li>
+                                                {{/each}}
+                                                {{else}}
                                                 <li><a href="#">Men</a></li>
                                                 <li><a href="#">Women</a></li>
                                                 <li><a href="#">Bags</a></li>
@@ -56,6 +61,7 @@
                                                 <li><a href="#">Kids</a></li>
                                                 <li><a href="#">Kids</a></li>
                                                 <li><a href="#">Kidsa</a></li>
+                                                {{/if}}
                                             </ul>
                                         </div>
                                     </div>

@@ -1,5 +1,11 @@
 /* Main */
-
+:root {
+    --primary-color: #e53637;
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --border-color: #dbdbdb;
+}
 .header {
     background-color: #fff;
 }
@@ -786,7 +792,7 @@ span.select2.select2-container.select2-container--default.select2-container--bel
 }
 .auth-form {
     background-color: var(--white-color);
-    width: 500px;
+    width: 600px;
     border-radius: 5px;
     overflow: hidden;
 }
