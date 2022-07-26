@@ -6,10 +6,11 @@ import {
     verifyToken,
     verifyTokenAndAuthorization,
     verifyTokenAdmin,
+    verifyTokenUser,
 }
  from '../middleware/authenticate.js'
-router.get('/',verifyToken, cartController.getShoppingCart);
-router.post('/add/:id', cartController.addToCart);
+router.get('/',verifyTokenUser, cartController.getShoppingCart);
+router.post('/add/:id',verifyTokenUser, cartController.addToCart);
 // router.post('/register', cartController.register);
 
 export default router;

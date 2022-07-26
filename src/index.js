@@ -62,11 +62,14 @@ app.engine(
 )
 app.use(session({
     secret: "secret",
-    resave: false,
+    resave: true,
     saveUninitialized: true
 }));
 app.use(function(req, res, next) {
+    res.locals.cookies = req.cookies;
     res.locals.session = req.session;
+    // res.locals.user = req.user;
+    // res.locals.admin = req.admin;
     next();
 });
 app.set('view engine', '.hbs')

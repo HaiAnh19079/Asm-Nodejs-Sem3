@@ -14,7 +14,6 @@ class ApiFeatures {
             : {}
 
         this.query = this.query.find({ ...keyword })
-        // console.log('search api:', this)
         return this
     }
 

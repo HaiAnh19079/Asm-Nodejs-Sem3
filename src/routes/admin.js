@@ -25,7 +25,8 @@ import {
  from '../middleware/authenticate.js'
 //home
 router.get('/', adminController.getLoginPage);
-router.get('/home', adminController.index);
+router.post('/login', adminController.loginAdmin);
+router.get('/home',verifyTokenAdmin, adminController.index);
 
 //products
 router.get('/products',verifyTokenAdmin, adminController.getProducts);

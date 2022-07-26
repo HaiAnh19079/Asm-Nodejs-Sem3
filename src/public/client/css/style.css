@@ -1080,6 +1080,10 @@ span.select2.select2-container.select2-container--default.select2-container--bel
 .header-cart-total .cart-total {
     font-size: 24px;
 }
+.view-cart-btn a{
+    width: 100%;
+    padding:9px 0;
+}
 .view-cart-btn,
 .add-cart-btn {
     display: flex;

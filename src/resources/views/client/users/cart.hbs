@@ -41,14 +41,28 @@
                                     <div class="cart__item__text">
                                         <h6>{{this.item.name}}</h6>
                                         <h5>${{this.item.price}}</h5>
+                                        <div class="form-group d-flex select-option-edit">
+                                            <select class="form-control" id="size" name="size">
+                                                <option value="{{this.size}}" selected="selected">Size {{this.size}}</option>
+                                                {{#each this.item.sizes}}
+                                                <option value="{{this}}" >Size {{this}}</option>   
+                                                {{/each}}
+                                            </select>
+                                            <select class="form-control" id="color" name="color">
+                                                <option value="{{this.color}}" selected="selected">color {{this.color}}</option>
+                                                {{#each this.item.colors}}
+                                                <option value="{{this}}" >Color {{this}}</option>   
+                                                {{/each}}
+                                            </select>
+                                        </div>
                                     </div>
                                 </td>
                                 <td class="cart__item__quantity">
                                     <div class="quantity-item">
                                         <div class="pro-qty-2">
-                                            <span class="fa fa-angle-left dec qtybtn"></span>
-                                            <input type="text" value="{{this.qty}}">
-                                            <span class="fa fa-angle-right inc qtybtn"></span>
+                                            <span data-id="{{this.itemId}}" class="fa fa-angle-left dec qtybtn"></span>
+                                            <input type="text" value="{{this.quantity}}">
+                                            <span data-id="{{this.itemId}}" class="fa fa-angle-right inc qtybtn"></span>
                                         </div>
                                     </div>
                                 </td>
@@ -103,6 +117,7 @@
                                 <td class="cart__price">$ 32.50</td>
                                 <td class="cart__close"><i class="fas fa-times"></i></td>
                             </tr>
+                            <div>Your Cart Is not product! </div>
                             {{/if}}
 
                         </tbody>

@@ -12,6 +12,7 @@ import { resolveNaptr } from 'dns/promises'
 class AdminController {
     //[GET] /admin/home
     index = async (req, res, next) => {
+       
         try {
             const totalProduct = await Product.countDocuments()
             const totalUser = await User.countDocuments()
@@ -34,13 +35,68 @@ class AdminController {
     getLoginPage = async (req, res, next) => {
         if(!req.cookies.token){
             res.render('admin/loginPage',{layout: 'loginAdmin'})
+            console.log(res.user)
+            console.log(res.admin)
+            
         }else{
+            
             res.redirect('/admin/home')
         }
 
     }
     //[POST] admin/login 
-    
+    async loginAdmin(req, res, next) {
+        const { email, password } = req.body
+        //checking if user has given password and email both
+        // let passwordToStr = password;
+        if (!email || !password) {
+            return next(new ErrorHandler('Please enter email & password', 400))
+        }
+
+        const user = await User.findOne({ email }).select('+password')
+        if (!user) {
+            return res.status(401).json({ message: 'User email not found' })
+        }
+
+        const isPasswordMatched = await user.comparePassword(password)
+        if (!isPasswordMatched) {
+            return res
+                .status(401)
+                .json({ message: 'Invalid email or password' })
+        }
+        const token = user.generateJWT()
+        user.token = token
+
+        // console.log('user->', user)
+
+        console.log('cart', req.session.cart)
+
+        if (user) {
+            // req.session.user = user
+            // if (req.session.cart) {
+            //     let cartUser = { ...req.session.cart }
+            //     cartUser.user = user._id
+            //     const cart = new Cart(cartUser)
+            //     console.log('cartU', cart)
+            // }
+
+            if (user.role === 'admin') {
+                console.log(user.role)
+                res.cookie('token', token, {
+                    httpOnly: true,
+                    maxAge: 3 * 60 * 60 * 1000,
+                })
+                req.admin = user
+                req.session.adminAcc = user
+                res.redirect('/admin/home')
+            }
+            if (user.role === 'user') {
+                console.log(user.role)
+                res.redirect('back')
+            }
+        }
+        // res.redirect('back')
+    }
 
     // [GET] admin/products
     getProducts = async (req, res, next) => {
@@ -75,7 +131,7 @@ class AdminController {
     saveCreate = async (req, res, next) => {
         const formdata = req.body
         const files = req.files
-        const userId = '620a30d6fda27979ae0ef650'
+        const userId = req.user._id
         // console.log('file->', files)
         formdata.images = []
         let index = 0
@@ -90,7 +146,7 @@ class AdminController {
 
         await product.save()
 
-        res.redirect('/admin')
+        res.redirect('back')
     }
 
     //[GET] admin/category/new

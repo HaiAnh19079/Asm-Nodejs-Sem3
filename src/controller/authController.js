@@ -48,46 +48,38 @@ class AuthController {
 
         const user = await User.findOne({ email }).select('+password')
         if (!user) {
-            return next(new ErrorHandler('Invalid email or password', 401))
+            return res.status(401).json({ message: 'User email not found' })
         }
 
         const isPasswordMatched = await user.comparePassword(password)
         if (!isPasswordMatched) {
-            return next(new ErrorHandler('Invalid email or password', 401))
+            return res
+                .status(401)
+                .json({ message: 'Invalid email or password' })
         }
         const token = user.generateJWT()
         user.token = token
 
         // console.log('user->', user)
-        // res.status(200).cookie('token', token, options)
-        // .json({
-        //     success: true,
-        //     user,
-        // })
+
         console.log('cart', req.session.cart)
 
         if (user) {
-            // req.session.user = user
-            if (req.session.cart) {
-                let cartUser = { ...req.session.cart }
-                cartUser.user = user._id
-                const cart = new Cart(cartUser)
-                console.log('cartU', cart)
+            let cart = await Cart.findOne({ user: user._id })
+            if(cart){
+
+                req.session.cart = MongooseToObject(cart)
+                req.session.products = MultipleMongooseToObject(cart.generateArray())
             }
-             res.cookie('token', token, {
+           
+            res.cookie('token_user', token, {
                 httpOnly: true,
-                maxAge: 3 * 60 * 60*1000,
+                maxAge: 3 * 60 * 60 * 1000,
             })
-            if (user.role === 'admin') {
-                console.log(user.role)
-
-                res.redirect('/admin/home')
-            }
-            if (user.role === 'user') {
-                console.log(user.role)
-
-                res.redirect('back')
-            }
+            req.user = user
+            req.session.user = MongooseToObject(user)
+            res.redirect('back')
+            
         }
         // res.redirect('back')
     }
@@ -97,20 +89,33 @@ class AuthController {
         // const user = req.user;
         const user = await User.findOne({ id: req.user.id })
         console.log('user logout:', user)
+        // req.user = null
         console.log('token:', req.token)
-        req.token = null
-        req.headers.authorization = null
-        req.user = null
+        
+            req.session.user = null
+            req.session.products = null
+            req.session.cart = null
+            res.clearCookie('token_user')
+            res.redirect('/')
+        // res.redirect('back')
+    }
+    async logoutAd(req, res, next) {
+        // const user = req.user;
+        const user = await User.findOne({ id: req.user.id })
+        console.log('user logout:', user)
+        // req.user = null
         console.log('token:', req.token)
-        res.cookie('token', null, {
-            expiresIn: new Date(Date.now()),
-            httpOnly: true,
-        })
-        // res.status(200).json({
-        //     success: true,
-        //     message: 'Logged Out',
-        // })
-        res.redirect('/')
+        if(user._id.toString() === req.user._id.toString()){
+            // req.user = null;
+            // req.session.user = null;
+            // req.session.cart = null;
+            // req.session.products = null;
+            // res.clearCookie('token_user')
+        }
+            req.session.adminAcc = null
+            res.clearCookie('token')
+            res.redirect('/')
+        // res.redirect('back')
     }
 }
 export default new AuthController()

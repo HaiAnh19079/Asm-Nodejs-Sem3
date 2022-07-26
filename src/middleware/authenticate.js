@@ -1,12 +1,11 @@
 import jwt from 'jsonwebtoken'
 import User from '../models/User.js'
 
-const verifyToken = async (req, res, next) => {
+const verifyTokenUser = async (req, res, next) => {
     // const authHeader = req.headers.authorization
-    // const authHeaderW = req.headers['Authorization']
-    const authHeader = req.cookies.token
+    if(!req.cookies.token_user) return res.redirect('back');
+    const authHeader = req.cookies.token_user
     console.log('auth',authHeader);
-    // console.log('auth1',authHeaderW);
     if (authHeader) {
         const token = authHeader//.split(' ')[1]
         const data = jwt.verify(token, process.env.JWT_SECRET)
@@ -17,15 +16,41 @@ const verifyToken = async (req, res, next) => {
         console.log('token:', token)
         next()
     } else {
-        // res.send(alert('You are not login'))
         // next()
-        res.redirect('login')
+        res.redirect('back')
         return res.status(401).json({
             success: false,
             message: 'You are not authenticated!',
         })
     }
 }
+
+const verifyToken = async (req, res, next) => {
+    // const authHeader = req.headers.authorization
+    if(!req.cookies.token) return res.redirect('/admin/');
+    const authHeader = req.cookies.token
+    console.log('auth',authHeader);
+    if (authHeader) {
+        const token = authHeader//.split(' ')[1]
+        const data = jwt.verify(token, process.env.JWT_SECRET)
+
+        req.user = await User.findById(data.id)
+        req.token = token
+        console.log('req.user:', req.user)
+        console.log('token:', token)
+        next()
+    } else {
+        // next()
+        res.redirect('/admin/')
+        return res.status(401).json({
+            success: false,
+            message: 'You are not authenticated!',
+        })
+    }
+}
+
+
+
 
 const verifyTokenAndAuthorization = (req, res, next) => {
     verifyToken(req, res, () => {
@@ -58,4 +83,4 @@ const verifyTokenAdmin = (req, res, next) => {
     })
 }
 
-export { verifyToken, verifyTokenAndAuthorization, verifyTokenAdmin }
+export { verifyToken,verifyTokenUser, verifyTokenAndAuthorization, verifyTokenAdmin }

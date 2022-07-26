@@ -56,7 +56,7 @@ class ProductController {
         const apiFeature = new ApiFeature(Product.find(), req.query)
             .search()
             .filter()
-        // .pagination(8)
+            .pagination()
         let products = await apiFeature.query
         if (typeof products === 'Array' && products.length === 0) {
             res.status(200).json({
@@ -66,11 +66,29 @@ class ProductController {
                 message: 'All products have been soft deleted',
             })
         }
+        let perPage = apiFeature.query.options.limit
+        // console.log(products.length)
+        // console.log(apiFeature.query.options)
+        // console.log(apiFeature.query.search)
+        // console.log('req.query',req.query)
+        let currentPage = req.query.page || 1
         const totalDocuments = await Product.countDocuments()
+        // console.log('totalDocuments',totalDocuments)
+        // console.log('products.length',products.length)
+        // console.log(Math.ceil(products.length / perPage))
+        let pages = Math.ceil(products.length / perPage)
+        let pagesArray = []
+        for (let i = 1; i <= pages; i++) {
+            pagesArray.push(i)
+        }
+        // console.log(pagesArray)
+
         res.render('client/products/products', {
             products: MultipleMongooseToObject(products),
             categories: MultipleMongooseToObject(categories),
             totalDocuments,
+            currentPage,
+            pages: pagesArray,
             // user: req.session.user|| null,
         })
     }
@@ -84,8 +102,8 @@ class ProductController {
                 message: 'Product not found !!',
             })
         }
-        console.log('now');
-        
+        console.log('now')
+
         res.render('client/products/productDetail', {
             product: MongooseToObject(product),
         })

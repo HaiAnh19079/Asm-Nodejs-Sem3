@@ -18,27 +18,41 @@ $(document).ready(function () {
             console.log('123')
             $(this).addClass('active')
         }
-    );
+    )
     $('.option-item.size label').on('click', function (e) {
         $('.option-item.size label').removeClass('active')
         $(this).addClass('active')
         // $('option-item.size label input').removeAttr('checked')
         // $(e.target).attr('checked', true)
-    });
+    })
     $(' .option-item.color label').on('click', function (e) {
         $('.option-item.color label').removeClass('active')
         $(this).addClass('active')
         // console.log(e.target)
         // $('.option-item.color label input').attr('checked', false)
         // $(e.target).attr('checked', true)
-    });
+    })
 
     //shop pagination active
     $('.js-shop__product-pagination a').on('click', function (e) {
-        e.preventDefault()
+        // e.preventDefault()
         $('.js-shop__product-pagination a').removeClass('active')
         $(this).addClass('active')
     })
+    let url = new URL(document.location).searchParams
+    let name = url.get('page')
+    if (name !== undefined) {
+        if ($('.js-shop__product-pagination a').val() === name) {
+            $('.js-shop__product-pagination a').removeClass('active')
+            $(this).addClass('active')
+        }
+    } else {
+        if ($('.js-shop__product-pagination a').val() === 1) {
+            $('.js-shop__product-pagination a').removeClass('active')
+            $(this).addClass('active')
+        }
+    }
+    console.log(name)
 
     /*------------------
     Background Set
@@ -179,7 +193,7 @@ $(document).ready(function () {
             swal(nameProduct, 'is added to cart !', 'success')
         })
     })
-    
+
     $('.header-cart').css('height', `${window.innerHeight}`)
     $(window).resize(function () {
         $('.header-cart').css('height', `${window.innerHeight}`)
@@ -199,9 +213,9 @@ $(document).ready(function () {
     $('.add-cart-btn').on('click', function () {
         $('.form-add-to-cart').submit()
     })
-    var proQty = $('.pro-qty-1')
-    proQty.on('click', '.qtybtn-qv', function () {
-        var $button = $(this)
+    const proQty1 = $('.pro-qty-1')
+    proQty1.on('click', '.qtybtn-qv', function () {
+        const $button = $(this)
         var oldValue = $button.parent().find('input').val()
         if ($button.hasClass('inc')) {
             var newVal = parseFloat(oldValue) + 1
@@ -215,9 +229,10 @@ $(document).ready(function () {
         }
         $button.parent().find('input').val(newVal)
     })
-    var proQty = $('.pro-qty-2')
-    proQty.on('click', '.qtybtn', function () {
-        var $button = $(this)
+
+    //edit product cart input value quantity
+    $('.pro-qty-2').on('click', '.qtybtn', function () {
+        const $button = $(this)
         var oldValue = $button.parent().find('input').val()
         if ($button.hasClass('inc')) {
             var newVal = parseFloat(oldValue) + 1
@@ -230,8 +245,47 @@ $(document).ready(function () {
             }
         }
         $button.parent().find('input').val(newVal)
-    });
-    
+        var quantityValue = $(this).closest('.pro-qty-2').find('input').val();
+        var itemId = $(this).attr('data-id')
+        var size = $(this).parent().parent().parent().parent().find('.cart__item__text select#size').val()
+        var color = $(this).parent().parent().parent().parent().find('.cart__item__text select#color').val()
+        console.log(quantityValue);
+        console.log(itemId);
+        console.log(size);
+        console.log(color);
+        // $.ajax({
+        //     url:'cart',
+        //     methpd:'GET',
+        //     dataType:'json',
+        //     data:{
+        //         quantityValue: quantityValue,
+        //         productId: itemId
+        //     }
+        // })
+
+    })
+
+    // edit product cart select size , color
+    $('.select-option-edit select#size').on('change', function (e){
+        var size = $(this).val()
+        var color = $(this).parent().find('select#color').val()
+        var quantity = $(this).parent().parent().parent().parent().find('.pro-qty-2 input').val();
+        console.log(size);
+        console.log(color);
+        console.log(quantity);
+        
+    })
+    $('.select-option-edit select#color').on('change', function (e){
+        var size = $(this).parent().find('select#size').val()
+        var color = $(this).val()
+        var quantity = $(this).parent().parent().parent().parent().find('.pro-qty-2 input').val();
+        console.log(size);
+        console.log(color);
+        console.log(quantity);
+        
+    })
+
+    // })
 
     $(document).on('click', '.js-modal-quick-view', function () {
         var dataId = $(this).attr('data-id')
@@ -284,9 +338,9 @@ $(document).ready(function () {
                         </div>
                         `
                     }
-                };
-                $('.nav.nav-tabs.img-tabs.img-qv').html(html);
-                $('.tab-content.img-qv').html(imgContent);
+                }
+                $('.nav.nav-tabs.img-tabs.img-qv').html(html)
+                $('.tab-content.img-qv').html(imgContent)
                 $('.tab-item').each(function (index, tab) {
                     const pane = $('.tab-pane')[index]
                     tab.onclick = function (e) {
@@ -307,21 +361,28 @@ $(document).ready(function () {
                 })
                 $('#product-name').text(product.name)
                 $('#product-price').text('$' + product.price)
+                $('#product-price').val(product.price)
                 $('#product-desc').text(product.description)
                 const sizes = Array.from(new Set(product.sizes))
                 console.log(sizes)
-                for (var i = 0; i < product.sizes.length; i++) {
-                    var s = `<option value="${product.sizes[i]}" style="padding:0 10px;font-size:16px;">Size ${product.sizes[i]}</option>`
-                    $('#product-size').append(s)
+                let s = `<option selected='selected'
+                style='padding:0 10px;font-size:16px;'>Choose a size
+                </option>`
+                let c = `<option selected='selected'
+                style='padding:0 10px;font-size:16px;'>Choose a color
+                </option>`
+                for (let i = 0; i < product.sizes.length; i++) {
+                    s += `<option value="${product.sizes[i]}" style="padding:0 10px;font-size:16px;">Size ${product.sizes[i]}</option>`
                 }
+                $('#product-size').html(s)
                 $('.form-add-to-cart').attr(
                     'action',
                     `/cart/add/${product._id}`
                 )
-                for (var i = 0; i < product.colors.length; i++) {
-                    var c = `<option value="${product.colors[i]}" style="padding:0 10px;font-size:16px;">Color ${product.colors[i]}</option>`
-                    $('#product-color').append(c)
+                for (let i = 0; i < product.colors.length; i++) {
+                    c += `<option value="${product.colors[i]}" style="padding:0 10px;font-size:16px;">Color ${product.colors[i]}</option>`
                 }
+                $('#product-color').html(c)
             },
             error: function (response) {
                 alert('server error')
@@ -344,7 +405,18 @@ $(document).ready(function () {
             $(this).addClass('active')
             $(pane).addClass('active')
         }
-    });
-
-
+    })
+    function addUrlParameter(name, value) {
+        var searchParams = new URLSearchParams(window.location.search)
+        searchParams.set(name, value)
+        window.location.search = searchParams.toString()
+    }
+    $('#submit_keyword').onclick = function (e) {
+        e.preventDefault()
+        addUrlParameter('keyword', $('#input_keyword').val())
+    }
+    console.log($('#submit_keyword'))
+    $('#input_keyword').on('change', function (e) {
+        console.log($('#input_keyword').val())
+    })
 })
