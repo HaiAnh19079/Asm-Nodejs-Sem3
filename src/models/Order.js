@@ -10,6 +10,10 @@ const OrderSchema = new Schema(
             type: Number,
             required: true,
         },
+        email: {
+            type: String,
+            required: true,
+        },
         // Cart
         cart: {
             type: Object,
@@ -38,7 +42,7 @@ const OrderSchema = new Schema(
         orderStatus: {
             type: String,
             required: true,
-            default: 'Processing',
+            default: 'Pending',
         },
     },
     {

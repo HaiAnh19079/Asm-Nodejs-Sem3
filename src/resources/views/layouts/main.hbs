@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    {{!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> --}}
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="/client/images/icons/favicon.png" />
     <!--===============================================================================================-->
@@ -60,9 +60,13 @@
             });
         });
     </script>
-   <script>
-    
-   </script>
+    <script language="Javascript">
+        function remove() {
+            $.post("/cart/remove", { id: $('.js-cart-remove-item a').attr('data-itemid') }, function (data) {
+                window.location.reload();
+            });  
+        }
+    </script>
     <script src="/client/js/main.js"></script>
 
 </body>

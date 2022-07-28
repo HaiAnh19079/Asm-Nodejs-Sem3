@@ -51,6 +51,11 @@ class OrderController {
         })
     }
 
+    async getOrderCreate(req, res, next){
+        res.render('client/checkout')
+    }
+
+
     // [GET] /api/orders --> admin
     async getAllOrders(req, res, next) {
         const ordersCount = await Order.countDocuments()

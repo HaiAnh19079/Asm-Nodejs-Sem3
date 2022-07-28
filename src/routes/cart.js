@@ -10,6 +10,10 @@ import {
 }
  from '../middleware/authenticate.js'
 router.get('/',verifyTokenUser, cartController.getShoppingCart);
+router.get('/checkout',verifyTokenUser, cartController.getCheckout);
+router.post('/checkout',verifyTokenUser, cartController.createOrder);
+router.post('/',verifyTokenUser, cartController.editProductCart);
+router.post('/remove',verifyTokenUser, cartController.removeItemCart);
 router.post('/add/:id',verifyTokenUser, cartController.addToCart);
 // router.post('/register', cartController.register);
 

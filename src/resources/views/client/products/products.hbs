@@ -22,7 +22,7 @@
             <div class="col-lg-3">
                 <div class="shop__sidebar">
                     <div class="shop__sidebar-search">
-                        <form action="" method="get"class="shop__form-search">
+                        <form action="" method="get" class="shop__form-search">
                             <input type="text" id="input_keyword" name="keyword" placeholder="Search...">
                             <button type="submit" id="submit_keyword" class="button-submit px-4">
                                 <i class="fas fa-search"></i>
@@ -47,7 +47,7 @@
                                             <ul class="shop-scroll">
                                                 {{#if categories}}
                                                 {{#each categories}}
-                                                    <li><a href="#">{{this.name}}</a></li>
+                                                <li><a href="#" value="{{this._id}}">{{this.name}}</a></li>
                                                 {{/each}}
                                                 {{else}}
                                                 <li><a href="#">Men</a></li>
@@ -79,19 +79,7 @@
                                     data-parent="#accordionExample">
                                     <div class="card-body">
                                         <div class="shop__sidebar-price shop__sidebar-scroll">
-                                            <ul class="shop-scroll">
-                                                <li><a href="#">Men</a></li>
-                                                <li><a href="#">Women</a></li>
-                                                <li><a href="#">Bags</a></li>
-                                                <li><a href="#">Clothing</a></li>
-                                                <li><a href="#">Shoes</a></li>
-                                                <li><a href="#">Accessories</a></li>
-                                                <li><a href="#">Kids</a></li>
-                                                <li><a href="#">Kids</a></li>
-                                                <li><a href="#">Kids</a></li>
-                                                <li><a href="#">Kids</a></li>
-                                                <li><a href="#">Kidsa</a></li>
-                                            </ul>
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -148,19 +136,15 @@
                                     data-parent="#accordionExample">
                                     <div class="card-body">
                                         <div class="shop__sidebar-color shop__sidebar-scroll">
-                                            <ul class="shop-scroll">
-                                                <li><a href="#">Men</a></li>
-                                                <li><a href="#">Women</a></li>
-                                                <li><a href="#">Bags</a></li>
-                                                <li><a href="#">Clothing</a></li>
-                                                <li><a href="#">Shoes</a></li>
-                                                <li><a href="#">Accessories</a></li>
-                                                <li><a href="#">Kids</a></li>
-                                                <li><a href="#">Kids</a></li>
-                                                <li><a href="#">Kids</a></li>
-                                                <li><a href="#">Kids</a></li>
-                                                <li><a href="#">Kidsa</a></li>
-                                            </ul>
+                                            <label for="Black" class="label-color">
+                                                <input type="radio" name="color" id="Black" value="Black">
+                                            </label>
+                                            <label for="White" class="label-color">
+                                                <input type="radio" name="color" id="White" value="White">
+                                            </label>
+                                            <label for="Blue" class="label-color">
+                                                <input type="radio" name="color" id="Blue" value="Blue">
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -195,28 +179,28 @@
                     {{#if products}}
 
                     {{#each products}}
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="set-bg product__item-img" data-setbg="{{this.images.[0].url}}">
-                                    <a href="#" class="quick-view-btn js-modal-quick-view js-show-modal"
-                                        data-id="{{this._id}}">Quick view</a>
-                                </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="product__item">
+                            <div class="set-bg product__item-img" data-setbg="{{this.images.[0].url}}">
+                                <a href="#" class="quick-view-btn js-modal-quick-view js-show-modal"
+                                    data-id="{{this._id}}">Quick view</a>
+                            </div>
 
-                                <div class="product__item-text">
-                                    <div class="text-header">
-                                        <a href="products/{{this._id}}"class="product-title">
-                                            <h6>{{this.name}}</h6>
-                                        </a>
-                                    </div>
-                                    <div class="product-price">
-                                        <h3>${{this.price}}</h3>
-                                    </div>
-                                    {{!-- <div class="product-color-select">
-                                        <a href="/cart/add/{{this._id}}">Add to cart</a>
-                                    </div> --}}
+                            <div class="product__item-text">
+                                <div class="text-header">
+                                    <a href="products/{{this._id}}" class="product-title">
+                                        <h6>{{this.name}}</h6>
+                                    </a>
                                 </div>
+                                <div class="product-price">
+                                    <h3>${{this.price}}</h3>
+                                </div>
+                                {{!-- <div class="product-color-select">
+                                    <a href="/cart/add/{{this._id}}">Add to cart</a>
+                                </div> --}}
                             </div>
                         </div>
+                    </div>
                     {{/each}}
 
                     {{/if}}
@@ -233,7 +217,8 @@
 
                             {{#if pages}}
                             {{#each pages}}
-                            <a class="active mx-2"type="submit" onclick="addUrlParameter('page', {{this}})">{{this}}</a>
+                            <a class="active mx-2" type="submit"
+                                onclick="addUrlParameter('page', {{this}})">{{this}}</a>
                             {{/each}}
 
                             {{/if}}

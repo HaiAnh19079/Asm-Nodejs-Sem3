@@ -70,6 +70,7 @@
     text-align: center;
     color: #111111;
     font-size: 16px;
+    outline :none;
 }
 .pro-qty-2 .dec.qtybtn {
 }
@@ -153,4 +154,15 @@
     text-transform: uppercase;
     color: #fff;
     background-color: #000;
+}
+.checkout-btn:hover{
+    color: #fff;
+    background-color: #000;
+}
+.label-input-checkout{
+    font-size:1.6rem;
+    font-weight: 600;
+}
+.checkout-form.space{
+    padding: 50px 0;
 }

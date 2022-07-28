@@ -72,13 +72,7 @@ class AdminController {
         console.log('cart', req.session.cart)
 
         if (user) {
-            // req.session.user = user
-            // if (req.session.cart) {
-            //     let cartUser = { ...req.session.cart }
-            //     cartUser.user = user._id
-            //     const cart = new Cart(cartUser)
-            //     console.log('cartU', cart)
-            // }
+            
 
             if (user.role === 'admin') {
                 console.log(user.role)
@@ -87,7 +81,7 @@ class AdminController {
                     maxAge: 3 * 60 * 60 * 1000,
                 })
                 req.admin = user
-                req.session.adminAcc = user
+                req.session.adminAcc = MongooseToObject(user)
                 res.redirect('/admin/home')
             }
             if (user.role === 'user') {

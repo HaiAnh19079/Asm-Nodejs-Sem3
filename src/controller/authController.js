@@ -17,9 +17,7 @@ class AuthController {
 
         const oldUser = await User.findOne({ email })
         if (oldUser) {
-            return next(
-                new ErrorHandler('User Already Exist. Please Login', 401)
-            )
+            return res.status(401).json({ message: 'User already exists , Please login!'})
         }
         avatar = 'path image demo'
         const user = await User.create({
@@ -114,7 +112,7 @@ class AuthController {
         }
             req.session.adminAcc = null
             res.clearCookie('token')
-            res.redirect('/')
+            res.redirect('/admin')
         // res.redirect('back')
     }
 }

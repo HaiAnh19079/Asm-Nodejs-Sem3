@@ -21,6 +21,7 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="shopping-cart-table">
+                    {{#if products}}
                     <table>
                         <thead>
                             <tr>
@@ -32,6 +33,7 @@
                         </thead>
                         <tbody>
                             {{#if session.cart}}
+
                             {{#each products}}
                             <tr>
                                 <td class="cart__item">
@@ -42,16 +44,20 @@
                                         <h6>{{this.item.name}}</h6>
                                         <h5>${{this.item.price}}</h5>
                                         <div class="form-group d-flex select-option-edit">
-                                            <select class="form-control" id="size" name="size">
-                                                <option value="{{this.size}}" selected="selected">Size {{this.size}}</option>
+                                            <select class="form-control" id="size" name="size"
+                                                data-proId="{{this.itemId}}" data-itemId="{{this._id}}">
+                                                <option value="{{this.size}}" selected="selected">Size {{this.size}}
+                                                </option>
                                                 {{#each this.item.sizes}}
-                                                <option value="{{this}}" >Size {{this}}</option>   
+                                                <option value="{{this}}">Size {{this}}</option>
                                                 {{/each}}
                                             </select>
-                                            <select class="form-control" id="color" name="color">
-                                                <option value="{{this.color}}" selected="selected">color {{this.color}}</option>
+                                            <select class="form-control" id="color" name="color"
+                                                data-proId="{{this.itemId}}" data-itemId="{{this._id}}">
+                                                <option value="{{this.color}}" selected="selected">color {{this.color}}
+                                                </option>
                                                 {{#each this.item.colors}}
-                                                <option value="{{this}}" >Color {{this}}</option>   
+                                                <option value="{{this}}">Color {{this}}</option>
                                                 {{/each}}
                                             </select>
                                         </div>
@@ -60,16 +66,23 @@
                                 <td class="cart__item__quantity">
                                     <div class="quantity-item">
                                         <div class="pro-qty-2">
-                                            <span data-id="{{this.itemId}}" class="fa fa-angle-left dec qtybtn"></span>
+                                            <span data-proId="{{this.itemId}}" data-itemId="{{this._id}}"
+                                                class="fa fa-angle-left dec qtybtn"></span>
                                             <input type="text" value="{{this.quantity}}">
-                                            <span data-id="{{this.itemId}}" class="fa fa-angle-right inc qtybtn"></span>
+                                            <span data-proId="{{this.itemId}}" data-itemId="{{this._id}}"
+                                                class="fa fa-angle-right inc qtybtn"></span>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="cart__price">${{this.price}}</td>
-                                <td class="cart__close"><i class="fas fa-times"></i></td>
+                                <td class="cart__close js-cart-remove-item">
+                                    <a href="javascript:remove()" data-itemId="{{this._id}}">
+                                        <i class="fas fa-times"></i>
+                                    </a>
+                                </td>
                             </tr>
                             {{/each}}
+
                             {{else}}
                             <tr>
                                 <td class="cart__item">
@@ -122,11 +135,17 @@
 
                         </tbody>
                     </table>
+                    {{else}}
+                    <div class="empty-cart" style="width: 100%;height:100%;display: flex;justify-content: center;">
+                        <img src="/client/img/Inlogo/cart-not.png" alt="" style="width: 26%;height:100%;">
+
+                    </div>
+                    {{/if}}
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="continue-btn">
-                            <a href="#" class="continue-link">Continue Shopping</a>
+                            <a href="/products" class="continue-link">Continue Shopping</a>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -137,6 +156,7 @@
                     </div>
                 </div>
             </div>
+            {{#if products}}
             <div class="col-lg-4">
                 <div class="cart-total">
                     <h6>Cart Total</h6>
@@ -148,10 +168,11 @@
                             <span>${{cartTotalPrice}}</span>
                         </div>
                     </div>
-                    <div class="checkout-btn">Proceed To Checkout</div>
+                    <a href="/cart/checkout" class="checkout-btn js-checkout-btn">Proceed To Checkout</a>
                 </div>
             </div>
-
+            {{else}}
+            {{/if}}
         </div>
     </div>
 </section>

@@ -44,7 +44,7 @@
                 <div class='col col-3'>
                     <div class='header__logo'>
                         <a href='/'>
-                            <img src='client/img/Inlogo/download.png' alt='' />
+                            <img src='/client/img/Inlogo/download.png' alt='' />
                         </a>
                     </div>
                 </div>
@@ -288,7 +288,7 @@
                                                                 <i class='fas fa-plus'></i>
                                                             </div>
                                                             <input class='num-product' type='text' value='1'
-                                                                name='qty' />
+                                                                name='qty' min="1"/>
                                                             <div class='dec qtybtn-qv btn-num-product-down'>
                                                                 <i class='fas fa-minus'></i>
                                                             </div>
@@ -349,7 +349,7 @@
                     </div>
 
                 </div>
-                {{#if session.cart}}
+                {{#if session.user}}
                 <div class='header-cart-total'>
                     <h4 class='cart-total-qv'>ToTal: ${{session.cart.totalPrice}}</h4>
                     <div class='view-cart-btn'>
